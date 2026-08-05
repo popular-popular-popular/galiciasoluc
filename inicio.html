@@ -533,38 +533,186 @@ body{
     padding:0 0 80px;
 }
 
-.tarjetas-header {
-    background:linear-gradient(180deg, #0a1628 0%, #1a2a5e 40%, #1a3a7a 70%, #2a5a9a 100%);
+/* FONDO AZUL CON NUBES */
+.fondo-tarjetas {
+    background:#14367a;
     color:#fff;
-    padding:16px 18px 20px;
+    padding:16px 18px 16px 18px;
     position:relative;
+    overflow:hidden;
 }
 
-.tarjetas-header .top-tarjetas {
-    display:flex;
-    align-items:center;
-    gap:15px;
+/* NUBE ARRIBA DERECHA */
+.nube-tarjetas-arriba {
+    position:absolute;
+    top:-40px;
+    right:-30px;
+    width:250px;
+    height:160px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
+    transform:rotate(-5deg);
+    z-index:0;
+}
+
+.nube-tarjetas-arriba::before {
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#06285d;
+    border-radius:50%;
+    left:-30px;
+    top:20px;
+}
+
+.nube-tarjetas-arriba::after {
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#06285d;
+    border-radius:50%;
+    right:5px;
+    bottom:-15px;
+}
+
+/* NUBE ABAJO IZQUIERDA */
+.nube-tarjetas-abajo {
+    position:absolute;
+    left:-68px;
+    bottom:-50px;
+    width:228px;
+    height:167px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index:0;
+}
+
+.nube-tarjetas-abajo::before {
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#06285d;
+    top:-45px;
+    left:20px;
+}
+
+.nube-tarjetas-abajo::after {
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#06285d;
+    right:-5px;
+    bottom:15px;
+}
+
+/* TITULO TARJETAS CENTRADO */
+.titulo-tarjetas {
+    text-align:center;
     position:relative;
     z-index:2;
+    font-size:20px;
+    font-weight:bold;
+    color:#fff;
+    padding:5px 0 10px 0;
 }
 
-.tarjetas-header .back-btn {
+/* FLECHA VOLVER */
+.btn-back {
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:3;
     font-size:22px;
     color:#fff;
     cursor:pointer;
-    padding:5px;
 }
 
-.tarjetas-header h1 {
-    font-size:20px;
-    color:#fff;
-    flex:1;
-}
-
+/* SECCION AZUL DE TARJETAS */
 .seccion-azul {
-    background:linear-gradient(180deg, #0a1628 0%, #1a2a5e 40%, #1a3a7a 70%, #2a5a9a 100%);
+    background:#14367a;
     padding:0 18px 20px;
     position:relative;
+    overflow:hidden;
+    margin-top:0;
+}
+
+/* NUBES DENTRO DE LA SECCION AZUL */
+.nube-azul-arriba {
+    position:absolute;
+    top:-40px;
+    right:-30px;
+    width:250px;
+    height:160px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
+    transform:rotate(-5deg);
+    z-index:0;
+}
+
+.nube-azul-arriba::before {
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#06285d;
+    border-radius:50%;
+    left:-30px;
+    top:20px;
+}
+
+.nube-azul-arriba::after {
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#06285d;
+    border-radius:50%;
+    right:5px;
+    bottom:-15px;
+}
+
+.nube-azul-abajo {
+    position:absolute;
+    left:-68px;
+    bottom:-50px;
+    width:228px;
+    height:167px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index:0;
+}
+
+.nube-azul-abajo::before {
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#06285d;
+    top:-45px;
+    left:20px;
+}
+
+.nube-azul-abajo::after {
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#06285d;
+    right:-5px;
+    bottom:15px;
 }
 
 .tarjetas-slider-container {
@@ -584,12 +732,13 @@ body{
     padding:0 2px;
 }
 
+/* TARJETA VISA - CRÉDITO (blanca) */
 .tarjeta-item.visa {
     background:#fff;
     border-radius:16px;
-    padding:24px 20px;
+    padding:30px 24px;
     box-shadow:0 4px 15px rgba(0,0,0,.25);
-    min-height:170px;
+    min-height:200px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -599,23 +748,42 @@ body{
 .tarjeta-item.visa .tipo {
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin-bottom:8px;
+    align-items:flex-start;
+    margin-bottom:10px;
 }
 
-.tarjeta-item.visa .tipo h3 {
-    font-size:18px;
+.tarjeta-item.visa .tipo-left {
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.tarjeta-item.visa .tipo-left .visa-title {
+    font-size:24px;
+    font-weight:bold;
     color:#333;
+    letter-spacing:1px;
+}
+
+.tarjeta-item.visa .tipo-left .debito-text {
+    font-size:13px;
+    color:#666;
+    font-weight:normal;
 }
 
 .tarjeta-item.visa .tipo .mostrar-datos {
     color:#1565C0;
     font-weight:bold;
-    font-size:11px;
+    font-size:12px;
     cursor:pointer;
+    margin-top:4px;
     display:flex;
     align-items:center;
-    gap:5px;
+    gap:6px;
+}
+
+.tarjeta-item.visa .tipo .mostrar-datos:hover {
+    text-decoration:underline;
 }
 
 .tarjeta-item.visa .tipo .mostrar-datos i {
@@ -623,16 +791,16 @@ body{
 }
 
 .tarjeta-item.visa .numero {
-    font-size:20px;
+    font-size:22px;
     color:#333;
     letter-spacing:3px;
-    margin:10px 0;
+    margin:12px 0 8px;
 }
 
 .tarjeta-item.visa .datos {
     display:flex;
     gap:20px;
-    font-size:12px;
+    font-size:13px;
     color:#333;
     margin-top:5px;
 }
@@ -643,17 +811,18 @@ body{
 
 .tarjeta-item.visa .datos div span {
     display:block;
-    font-size:9px;
+    font-size:10px;
     color:#999;
     margin-bottom:3px;
 }
 
+/* TARJETA DÉBITO VIRTUAL (salmón) */
 .tarjeta-item.debito {
-    background:linear-gradient(135deg, #f5a623, #e88a1e);
+    background:linear-gradient(83deg, #514492, #fc2702);
     border-radius:16px;
-    padding:24px 20px;
+    padding:30px 24px;
     box-shadow:0 4px 15px rgba(0,0,0,.25);
-    min-height:170px;
+    min-height:200px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -663,24 +832,63 @@ body{
 .tarjeta-item.debito .tipo {
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin-bottom:8px;
+    align-items:flex-start;
+    margin-bottom:10px;
 }
 
-.tarjeta-item.debito .tipo h3 {
-    font-size:18px;
+.tarjeta-item.debito .tipo-left {
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.tarjeta-item.debito .tipo-left .visa-row {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.tarjeta-item.debito .tipo-left .visa-title {
+    font-size:24px;
+    font-weight:bold;
     color:#fff;
+    letter-spacing:1px;
+}
+
+.tarjeta-item.debito .tipo-left .virtual-badge {
+    background:#fff;
+    border:1.5px solid rgba(255,255,255,0.3);
+    color:#1565C0;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    white-space:nowrap;
+}
+
+.tarjeta-item.debito .tipo-left .debito-text {
+    font-size:13px;
+    color:rgba(255,255,255,0.8);
+    font-weight:normal;
 }
 
 .tarjeta-item.debito .tipo .mostrar-datos {
     color:#fff;
     font-weight:bold;
-    font-size:11px;
+    font-size:12px;
     cursor:pointer;
+    margin-top:4px;
     opacity:0.8;
     display:flex;
     align-items:center;
-    gap:5px;
+    gap:6px;
+}
+
+.tarjeta-item.debito .tipo .mostrar-datos:hover {
+    opacity:1;
+    text-decoration:underline;
 }
 
 .tarjeta-item.debito .tipo .mostrar-datos i {
@@ -688,16 +896,16 @@ body{
 }
 
 .tarjeta-item.debito .numero {
-    font-size:20px;
+    font-size:22px;
     color:#fff;
     letter-spacing:3px;
-    margin:10px 0;
+    margin:12px 0 8px;
 }
 
 .tarjeta-item.debito .datos {
     display:flex;
     gap:20px;
-    font-size:12px;
+    font-size:13px;
     color:#fff;
     margin-top:5px;
 }
@@ -708,7 +916,7 @@ body{
 
 .tarjeta-item.debito .datos div span {
     display:block;
-    font-size:9px;
+    font-size:10px;
     color:rgba(255,255,255,0.6);
     margin-bottom:3px;
 }
@@ -1131,28 +1339,39 @@ body{
 
 <div class="page-tarjetas">
 
-<div class="tarjetas-header">
-    <div class="top-tarjetas">
-        <span class="back-btn" onclick="showPage('home')">
-            <i class="fa-solid fa-arrow-left"></i>
-        </span>
-        <h1>Tarjetas</h1>
-    </div>
+<!-- FONDO CON NUBES -->
+<div class="fondo-tarjetas">
+    <div class="nube-tarjetas-arriba"></div>
+    <div class="nube-tarjetas-abajo"></div>
+    
+    <span class="btn-back" onclick="showPage('home')">
+        <i class="fa-solid fa-arrow-left"></i>
+    </span>
+    
+    <div class="titulo-tarjetas">Tarjetas</div>
 </div>
 
+<!-- SECCION AZUL CON NUBES -->
 <div class="seccion-azul">
+    <div class="nube-azul-arriba"></div>
+    <div class="nube-azul-abajo"></div>
 
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
-            <!-- TARJETA 1 - VISA (blanca) -->
+            <!-- TARJETA VISA - CRÉDITO (blanca) -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
-                        <h3>VISA</h3>
-                        <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
-                            <i class="fa-regular fa-eye"></i> Mostrar datos
-                        </span>
+                        <div class="tipo-left">
+                            <span class="visa-title">VISA</span>
+                            <span class="debito-text">Débito</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
+                                <i class="fa-regular fa-eye"></i> Mostrar datos
+                            </span>
+                        </div>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
                     <div class="datos">
@@ -1168,14 +1387,22 @@ body{
                 </div>
             </div>
 
-            <!-- TARJETA 2 - DÉBITO (salmón) -->
+            <!-- TARJETA DÉBITO VIRTUAL (salmón) -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
-                        <h3>Débito</h3>
-                        <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
-                            <i class="fa-regular fa-eye"></i> Mostrar datos
-                        </span>
+                        <div class="tipo-left">
+                            <div class="visa-row">
+                                <span class="visa-title">VISA</span>
+                                <span class="virtual-badge">Virtual</span>
+                            </div>
+                            <span class="debito-text">Débito</span>
+                        </div>
+                        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
+                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
+                                <i class="fa-regular fa-eye"></i> Mostrar datos
+                            </span>
+                        </div>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
                     <div class="datos">
@@ -1255,7 +1482,7 @@ body{
     </div>
     <div class="footer-m">
         <div class="m-icon">
-            <img src="m.jpeg" alt="M">
+            <img src="gal.gif" alt="M">
         </div>
     </div>
     <div class="item" data-page="transferencias" onclick="showPage('transferencias')">
@@ -1278,7 +1505,7 @@ function mostrarDatosTarjeta(elemento) {
     const overlay = document.getElementById('overlayValidacion');
     overlay.classList.add('active');
     
-    // Cambiar el ícono del ojo a abierto
+    // Cambiar el ícono del ojo a abierto (ya está abierto)
     const icono = elemento.querySelector('i');
     icono.className = 'fa-regular fa-eye';
     
