@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Home Banking</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#ececec;
+    padding-bottom:70px;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.phone{
+    width:100%;
+    max-width:390px;
+    margin:0 auto;
+    background:#f5f7fa;
+    min-height:100vh;
+    box-shadow:0 0 30px rgba(0,0,0,.15);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+}
+
+/* Ocultar/mostrar secciones */
+.page {
+    display:none;
+    flex:1;
+    flex-direction:column;
+}
+
+.page.active {
+    display:flex;
+}
+
+/* ===== HOME ===== */
+.header{
+    background:#14367a;
+    color:#fff;
+    padding:16px 18px 20px;
+    flex-shrink:0;
+    position:relative;
+    overflow:hidden;
+    min-height:360px;
+}
+
+/* NUBE ARRIBA DERECHA */
+.nube-arriba {
+    position:absolute;
+    top:-40px;
+    right:-30px;
+    width:250px;
+    height:160px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
+    transform:rotate(-5deg);
+    z-index:0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nube-arriba::before {
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#06285d;
+    border-radius:50%;
+    left:-30px;
+    top:20px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nube-arriba::after {
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#06285d;
+    border-radius:50%;
+    right:5px;
+    bottom:-15px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide.active .nube-arriba {
+    transform: rotate(-5deg) translateX(-20px) translateY(10px) scale(1.05);
+}
+
+.slide.active .nube-arriba::before {
+    transform: translateX(-15px) translateY(8px);
+}
+
+.slide.active .nube-arriba::after {
+    transform: translateX(10px) translateY(-8px);
+}
+
+/* NUBE ABAJO IZQUIERDA */
+.nube-abajo {
+    position:absolute;
+    left:-50px;
+    bottom:-50px;
+    width:280px;
+    height:190px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index:0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nube-abajo::before {
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#06285d;
+    top:-45px;
+    left:20px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nube-abajo::after {
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#06285d;
+    right:-5px;
+    bottom:15px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide.active .nube-abajo {
+    transform: translateX(25px) translateY(-15px) scale(1.05);
+}
+
+.slide.active .nube-abajo::before {
+    transform: translateX(18px) translateY(-10px);
+}
+
+.slide.active .nube-abajo::after {
+    transform: translateX(-15px) translateY(10px);
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+.logo{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.logo img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.icons{
+    display:flex;
+    gap:16px;
+    font-size:20px;
+    color:#fff;
+    position:relative;
+    z-index:2;
+}
+
+.icons i{
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.icons i:hover{
+    transform:scale(1.1);
+}
+
+.btn-ir-cuentas{
+    margin:12px auto 8px;
+    width:160px;
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+    padding:8px 12px;
+    border-radius:25px;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:13px;
+    backdrop-filter:blur(5px);
+    border:1px solid rgba(255,255,255,0.2);
+    position:relative;
+    z-index:2;
+}
+
+.btn-ir-cuentas:hover{
+    background:rgba(255,255,255,0.25);
+    transform:scale(1.05);
+}
+
+.account{
+    text-align:center;
+    margin-top:5px;
+    position:relative;
+    z-index:2;
+}
+
+.account h3{
+    font-size:14px;
+    margin-bottom:4px;
+    font-weight:normal;
+    color:#fff;
+    opacity:0.9;
+}
+
+.balance{
+    font-size:42px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.balance sup{
+    font-size:18px;
+}
+
+.number{
+    margin-top:6px;
+    font-size:14px;
+    opacity:0.8;
+    color:#fff;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:16px;
+    position:relative;
+    z-index:2;
+    align-items:start;
+}
+
+.btn-accion-img {
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+    cursor:pointer;
+    transition:all 0.3s;
+    border-radius:8px;
+}
+
+.btn-accion-img:hover {
+    transform:scale(1.1);
+}
+
+.action{
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.action:hover{
+    transform:translateY(-3px);
+}
+
+.action i {
+    font-size:24px;
+    color:#fff;
+    display:block;
+    margin:0 auto;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.action p{
+    margin-top:4px;
+    font-size:11px;
+    opacity:0.9;
+    color:#fff;
+}
+
+/* IMAGEN TOQUE - SOLO IMAGEN ESTATICA */
+.img-toque {
+    width:100%;
+    border-radius:12px;
+    margin-top:6px;
+    cursor:pointer;
+    transition:all 0.3s;
+    display:block;
+    position:relative;
+    z-index:2;
+}
+
+.img-toque:hover {
+    transform:scale(1.02);
+}
+
+.slider-indicators{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:8px;
+    position:relative;
+    z-index:2;
+}
+
+.slider-indicators span{
+    width:10px;
+    height:10px;
+    background:rgba(255,255,255,0.3);
+    border-radius:20px;
+    transition:all 0.3s;
+    cursor:pointer;
+}
+
+.slider-indicators span.active{
+    width:35px;
+    background:#fff;
+}
+
+.content{
+    padding:18px;
+    flex:1;
+    padding-bottom:80px;
+    background:#f5f7fa;
+}
+
+.title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.title h1{
+    font-size:18px;
+    color:#333;
+}
+
+.title i{
+    color:#1565C0;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* SLIDER DE ACCESOS DIRECTOS */
+.slider-accesos {
+    position:relative;
+    overflow:hidden;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.slider-accesos-track {
+    display:flex;
+    transition:transform 0.8s ease;
+}
+
+.slider-accesos-track img {
+    width:100%;
+    flex-shrink:0;
+    display:block;
+    cursor:pointer;
+}
+
+/* INDICADORES DEL SLIDER DE ACCESOS DIRECTOS */
+.accesos-indicators {
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:10px;
+}
+
+.accesos-indicators span {
+    width:10px;
+    height:10px;
+    background:#ccc;
+    border-radius:50%;
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.accesos-indicators span.active {
+    background:#1565C0;
+    width:30px;
+    border-radius:10px;
+}
+
+/* BENEFICIOS */
+.beneficios-section {
+    margin-top:22px;
+}
+
+.beneficios-section h2 {
+    font-size:17px;
+    color:#333;
+    margin-bottom:12px;
+}
+
+.img-beneficios {
+    width:100%;
+    border-radius:14px;
+    cursor:pointer;
+    transition:all 0.3s;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.img-beneficios:hover {
+    transform:scale(1.01);
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+/* RECOMENDACIONES */
+.recomendaciones {
+    margin-top:22px;
+    margin-bottom:10px;
+}
+
+.recomendaciones h2 {
+    font-size:17px;
+    color:#333;
+    margin-bottom:12px;
+}
+
+.img-recomen {
+    width:100%;
+    border-radius:14px;
+    cursor:pointer;
+    transition:all 0.3s;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.img-recomen:hover {
+    transform:scale(1.01);
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+/* Slider */
+.slide-container {
+    overflow:hidden;
+    position:relative;
+}
+
+.slide-track {
+    display:flex;
+    transition:transform 0.5s ease;
+}
+
+.slide {
+    min-width:100%;
+    padding:0 3px;
+}
+
+.fima-box, .dolar-box {
+    background:rgba(255,255,255,0.12);
+    border-radius:10px;
+    padding:10px 14px;
+    margin:12px 0 5px;
+    backdrop-filter:blur(5px);
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.1);
+    position:relative;
+    z-index:2;
+}
+
+.fima-box h4, .dolar-box h4 {
+    font-size:13px;
+    color:#fff;
+}
+
+.fima-box p, .dolar-box p {
+    font-size:11px;
+    opacity:0.9;
+    color:#fff;
+    margin-top:2px;
+}
+
+.btn-fima, .btn-dolar {
+    background:#fff;
+    color:#0D47A1;
+    padding:5px 22px;
+    border-radius:18px;
+    font-weight:bold;
+    font-size:12px;
+    cursor:pointer;
+    border:none;
+    margin-top:6px;
+    transition:all 0.3s;
+}
+
+.btn-fima:hover, .btn-dolar:hover {
+    transform:scale(1.05);
+    box-shadow:0 3px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== TARJETAS ===== */
+.page-tarjetas {
+    min-height:100vh;
+    padding:0 0 80px;
+}
+
+.tarjetas-header {
+    background:linear-gradient(180deg, #0a1628 0%, #1a2a5e 40%, #1a3a7a 70%, #2a5a9a 100%);
+    color:#fff;
+    padding:16px 18px 20px;
+    position:relative;
+}
+
+.tarjetas-header .top-tarjetas {
+    display:flex;
+    align-items:center;
+    gap:15px;
+    position:relative;
+    z-index:2;
+}
+
+.tarjetas-header .back-btn {
+    font-size:22px;
+    color:#fff;
+    cursor:pointer;
+    padding:5px;
+}
+
+.tarjetas-header h1 {
+    font-size:20px;
+    color:#fff;
+    flex:1;
+}
+
+.seccion-azul {
+    background:linear-gradient(180deg, #0a1628 0%, #1a2a5e 40%, #1a3a7a 70%, #2a5a9a 100%);
+    padding:0 18px 20px;
+    position:relative;
+}
+
+.tarjetas-slider-container {
+    overflow:hidden;
+    position:relative;
+    margin-bottom:12px;
+    z-index:2;
+}
+
+.tarjetas-slider-track {
+    display:flex;
+    transition:transform 0.5s ease;
+}
+
+.tarjeta-slide {
+    min-width:100%;
+    padding:0 2px;
+}
+
+.tarjeta-item.visa {
+    background:#fff;
+    border-radius:16px;
+    padding:24px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width:100%;
+}
+
+.tarjeta-item.visa .tipo {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.tarjeta-item.visa .tipo h3 {
+    font-size:18px;
+    color:#333;
+}
+
+.tarjeta-item.visa .tipo .mostrar-datos {
+    color:#1565C0;
+    font-weight:bold;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.tarjeta-item.visa .numero {
+    font-size:20px;
+    color:#333;
+    letter-spacing:3px;
+    margin:10px 0;
+}
+
+.tarjeta-item.visa .datos {
+    display:flex;
+    gap:20px;
+    font-size:12px;
+    color:#333;
+    margin-top:5px;
+}
+
+.tarjeta-item.visa .datos div {
+    flex:1;
+}
+
+.tarjeta-item.visa .datos div span {
+    display:block;
+    font-size:9px;
+    color:#999;
+    margin-bottom:3px;
+}
+
+.tarjeta-item.debito {
+    background:linear-gradient(135deg, #f5a623, #e88a1e);
+    border-radius:16px;
+    padding:24px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.25);
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width:100%;
+}
+
+.tarjeta-item.debito .tipo {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:8px;
+}
+
+.tarjeta-item.debito .tipo h3 {
+    font-size:18px;
+    color:#fff;
+}
+
+.tarjeta-item.debito .tipo .mostrar-datos {
+    color:#fff;
+    font-weight:bold;
+    font-size:11px;
+    cursor:pointer;
+    opacity:0.8;
+}
+
+.tarjeta-item.debito .numero {
+    font-size:20px;
+    color:#fff;
+    letter-spacing:3px;
+    margin:10px 0;
+}
+
+.tarjeta-item.debito .datos {
+    display:flex;
+    gap:20px;
+    font-size:12px;
+    color:#fff;
+    margin-top:5px;
+}
+
+.tarjeta-item.debito .datos div {
+    flex:1;
+}
+
+.tarjeta-item.debito .datos div span {
+    display:block;
+    font-size:9px;
+    color:rgba(255,255,255,0.6);
+    margin-bottom:3px;
+}
+
+.tarjetas-indicators {
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin:6px 0 0;
+    z-index:2;
+    position:relative;
+}
+
+.tarjetas-indicators span {
+    width:10px;
+    height:10px;
+    background:rgba(255,255,255,0.3);
+    border-radius:20px;
+    transition:all 0.3s;
+    cursor:pointer;
+}
+
+.tarjetas-indicators span.active {
+    width:35px;
+    background:#fff;
+}
+
+.acciones-tarjeta {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:14px;
+    z-index:2;
+    position:relative;
+}
+
+.acciones-tarjeta .btn-accion {
+    background:rgba(255,255,255,0.12);
+    color:#fff;
+    padding:10px 6px;
+    border-radius:12px;
+    text-align:center;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.3s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.acciones-tarjeta .btn-accion:hover {
+    background:rgba(255,255,255,0.2);
+    transform:scale(1.02);
+}
+
+.acciones-tarjeta .btn-accion i {
+    display:block;
+    font-size:18px;
+    margin-bottom:4px;
+}
+
+.seccion-blanca {
+    background:#f5f7fa;
+    padding:18px;
+}
+
+.movimientos-total {
+    background:#fff;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:16px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.movimientos-total p {
+    font-size:13px;
+    color:#666;
+}
+
+.movimientos-total .total {
+    font-size:22px;
+    font-weight:bold;
+    color:#333;
+    margin-top:5px;
+}
+
+.info-tarjeta {
+    background:#fff;
+    border-radius:14px;
+    padding:16px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.info-tarjeta h3 {
+    font-size:16px;
+    color:#333;
+    margin-bottom:12px;
+}
+
+.info-tarjeta .info-item {
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
+
+.info-tarjeta .info-item:last-child {
+    border-bottom:none;
+}
+
+.info-tarjeta .info-item span:first-child {
+    color:#666;
+    font-size:13px;
+}
+
+.info-tarjeta .info-item span:last-child {
+    color:#333;
+    font-weight:bold;
+    font-size:14px;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:10px 0 8px;
+    border-top:1px solid #ddd;
+    z-index:1000;
+    max-width:390px;
+    margin:0 auto;
+}
+
+.item{
+    text-align:center;
+    color:#666;
+    font-size:11px;
+    cursor:pointer;
+    transition:all 0.3s;
+    flex:1;
+}
+
+.item i{
+    display:block;
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.item:hover{
+    color:#1565C0;
+}
+
+.item.active{
+    color:#1565C0;
+}
+
+.footer-m {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    padding:0 8px;
+}
+
+.footer-m .m-icon {
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+.footer-m .m-icon img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Responsive */
+@media(max-width:420px){
+    body{
+        padding-bottom:65px;
+        background:#fff;
+    }
+    .phone{
+        max-width:100%;
+        box-shadow:none;
+        border-radius:0;
+    }
+    .footer{
+        max-width:100%;
+        padding:10px 0 8px;
+    }
+}
+
+@media(min-width:421px){
+    .phone{
+        margin:20px auto;
+        border-radius:25px;
+        min-height:auto;
+        box-shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+    body{
+        padding-bottom:70px;
+        background:#ececec;
+        align-items:center;
+    }
+    .footer{
+        border-radius:0 0 25px 25px;
+        max-width:390px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="phone">
+
+<!-- ===== PÁGINA HOME ===== -->
+<div class="page active" id="page-home">
+
+<div class="header">
+
+    <div class="nube-arriba"></div>
+    <div class="nube-abajo"></div>
+
+    <div class="top">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <div class="icons">
+            <i class="fa-regular fa-eye" id="toggleBalance" style="cursor:pointer;"></i>
+            <i class="fa-regular fa-circle-question"></i>
+            <i class="fa-regular fa-bell"></i>
+        </div>
+    </div>
+
+    <div class="btn-ir-cuentas">Ir a Cuentas</div>
+
+    <div class="slide-container">
+        <div class="slide-track" id="slideTrack">
+
+            <!-- SLIDE 1 -->
+            <div class="slide active" data-slide="0">
+                <div class="account">
+                    <h3>Caja de ahorro en pesos</h3>
+                    <div class="balance" id="balanceDisplay">$ 0<sup>00</sup></div>
+                    <div class="number">★ Nº 4070450-4 028-4</div>
+                </div>
+                <div class="actions">
+                    <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
+                    <img src="ingresar.jpeg" alt="Ingresar" class="btn-accion-img" onclick="alert('Ingresar...')">
+                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
+                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                </div>
+            </div>
+
+            <!-- SLIDE 2 -->
+            <div class="slide" data-slide="1">
+                <div class="account">
+                    <h3>Caja de ahorro en pesos</h3>
+                    <div class="balance" id="balanceDisplay2">$ 0<sup>00</sup></div>
+                    <div class="number">★ Nº 4070450-4 028-4</div>
+                </div>
+                <div class="fima-box">
+                    <h4>💰 Activa Cuenta FIMA y hace rendir tus pesos un 16,6% anual</h4>
+                    <button class="btn-fima" onclick="alert('Activando cuenta FIMA...')">Activar Cuenta FIMA</button>
+                </div>
+                <div class="actions">
+                    <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
+                    <img src="ingresar.jpeg" alt="Ingresar" class="btn-accion-img" onclick="alert('Ingresar...')">
+                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
+                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                </div>
+            </div>
+
+            <!-- SLIDE 3 -->
+            <div class="slide" data-slide="2">
+                <div class="account">
+                    <h3>Caja de ahorro en dólares</h3>
+                    <div class="balance" id="balanceDisplay3">USD 0<sup>00</sup></div>
+                    <div class="number">★ Nº 4057434-1 028-6</div>
+                </div>
+                <div class="dolar-box">
+                    <h4>💵 MEP USD</h4>
+                    <p>Operá Dólar MEP desde tu cuenta</p>
+                    <button class="btn-dolar" onclick="alert('Activando cuenta remunerada...')">ACTIVAR CUENTA REMUNERADA</button>
+                </div>
+                <div class="actions">
+                    <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
+                    <img src="comprar.jpeg" alt="Operar Dólar MEP" class="btn-accion-img" onclick="alert('Operar Dólar MEP...')">
+                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
+                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                </div>
+            </div>
+
+            <!-- SLIDE 4 -->
+            <div class="slide" data-slide="3">
+                <div class="account">
+                    <h3>Caja de ahorro en pesos</h3>
+                    <div class="balance" id="balanceDisplay4">$ ****</div>
+                    <div class="number">★ Nº 4070450-4 028-4</div>
+                </div>
+                <div class="actions">
+                    <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
+                    <img src="ingresar.jpeg" alt="Ingresar" class="btn-accion-img" onclick="alert('Ingresar...')">
+                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
+                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INDICADORES DEL SLIDER HOME -->
+    <div class="slider-indicators" id="indicators">
+        <span class="active" data-index="0"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
+    </div>
+
+    <!-- IMAGEN TOQUE - SOLO IMAGEN ESTATICA, SIN INDICADORES -->
+    <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
+
+</div>
+
+<div class="content">
+
+    <div class="title">
+        <h1>Accesos directos</h1>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+
+    <!-- SLIDER DE ACCESOS DIRECTOS -->
+    <div class="slider-accesos">
+        <div class="slider-accesos-track" id="sliderAccesosTrack">
+            <img src="directos.jpeg" alt="Accesos directos 1" onclick="alert('Accesos directos 1...')">
+            <img src="directos2.jpeg" alt="Accesos directos 2" onclick="alert('Accesos directos 2...')">
+        </div>
+    </div>
+
+    <!-- INDICADORES DEL SLIDER DE ACCESOS DIRECTOS -->
+    <div class="accesos-indicators" id="accesosIndicators">
+        <span class="active" data-index="0"></span>
+        <span data-index="1"></span>
+    </div>
+
+    <!-- BENEFICIOS -->
+    <div class="beneficios-section">
+        <h2>Beneficios</h2>
+        <img src="benefi.jpeg" alt="Beneficios" class="img-beneficios" onclick="alert('Beneficios...')">
+    </div>
+
+    <!-- RECOMENDACIONES -->
+    <div class="recomendaciones">
+        <h2>Recomendaciones</h2>
+        <img src="recomen.jpeg" alt="Recomendaciones" class="img-recomen" onclick="alert('Recomendaciones...')">
+    </div>
+
+</div>
+
+</div><!-- end page-home -->
+
+<!-- ===== PÁGINA TARJETAS ===== -->
+<div class="page" id="page-tarjetas">
+
+<div class="page-tarjetas">
+
+<div class="tarjetas-header">
+    <div class="top-tarjetas">
+        <span class="back-btn" onclick="showPage('home')">
+            <i class="fa-solid fa-arrow-left"></i>
+        </span>
+        <h1>Tarjetas</h1>
+    </div>
+</div>
+
+<div class="seccion-azul">
+
+    <div class="tarjetas-slider-container">
+        <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
+            
+            <div class="tarjeta-slide active" data-slide="0">
+                <div class="tarjeta-item visa">
+                    <div class="tipo">
+                        <h3>VISA</h3>
+                        <span class="mostrar-datos">Mostrar datos</span>
+                    </div>
+                    <div class="numero">**** **** **** 3501</div>
+                    <div class="datos">
+                        <div>
+                            <span>Fecha de vencimiento</span>
+                            12/28
+                        </div>
+                        <div>
+                            <span>Código de seguridad</span>
+                            <span class="codigo">***</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-slide" data-slide="1">
+                <div class="tarjeta-item debito">
+                    <div class="tipo">
+                        <h3>Débito</h3>
+                        <span class="mostrar-datos">Mostrar datos</span>
+                    </div>
+                    <div class="numero">**** **** **** 3501</div>
+                    <div class="datos">
+                        <div>
+                            <span>Fecha de vencimiento</span>
+                            12/28
+                        </div>
+                        <div>
+                            <span>Código de seguridad</span>
+                            <span class="codigo">***</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="tarjetas-indicators" id="tarjetasIndicators">
+        <span class="active" data-index="0"></span>
+        <span data-index="1"></span>
+    </div>
+
+    <div class="acciones-tarjeta">
+        <div class="btn-accion" onclick="alert('Blanqueando PIN...')">
+            <i class="fa-solid fa-key"></i>
+            Blanquear PIN
+        </div>
+        <div class="btn-accion" onclick="alert('Pausando tarjeta...')">
+            <i class="fa-solid fa-pause"></i>
+            Pausar tarjeta
+        </div>
+        <div class="btn-accion" onclick="alert('Denunciando tarjeta...')">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Denunciar tarjeta
+        </div>
+        <div class="btn-accion" onclick="alert('Más gestiones...')">
+            <i class="fa-solid fa-ellipsis"></i>
+            Más gestiones
+        </div>
+    </div>
+
+</div>
+
+<div class="seccion-blanca">
+
+    <div class="movimientos-total">
+        <p>El total de movimientos es de</p>
+        <div class="total">$ 7.081.945,69 y USD 0</div>
+    </div>
+
+    <div class="info-tarjeta">
+        <h3>Información de tu tarjeta</h3>
+        <div class="info-item">
+            <span>Límite de compra</span>
+            <span>$ 7.200.000</span>
+        </div>
+        <div class="info-item">
+            <span>Límite de extracción</span>
+            <span>$ 400.000</span>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div><!-- end page-tarjetas -->
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+    <div class="item active" data-page="home" onclick="showPage('home')">
+        <i class="fa-solid fa-house"></i>Inicio
+    </div>
+    <div class="item" data-page="tarjetas" onclick="showPage('tarjetas')">
+        <i class="fa-regular fa-credit-card"></i>Tarjetas
+    </div>
+    <div class="footer-m">
+        <div class="m-icon">
+            <img src="m.jpeg" alt="M">
+        </div>
+    </div>
+    <div class="item" data-page="transferencias" onclick="showPage('transferencias')">
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>Transferencia...
+    </div>
+    <div class="item" data-page="mas" onclick="showPage('mas')">
+        <i class="fa-solid fa-bars"></i>Más
+    </div>
+</div>
+
+</div><!-- end phone -->
+
+<script>
+// ===== NAVEGACIÓN ENTRE PÁGINAS =====
+function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('active');
+    });
+    
+    const targetPage = document.getElementById('page-' + page);
+    if (targetPage) {
+        targetPage.classList.add('active');
+    }
+    
+    document.querySelectorAll('.footer .item').forEach(item => {
+        item.classList.remove('active');
+        if (item.dataset.page === page) {
+            item.classList.add('active');
+        }
+    });
+    
+    window.scrollTo(0, 0);
+}
+
+// ===== SLIDER HOME =====
+const slides = document.querySelectorAll('.slide');
+const indicators = document.querySelectorAll('.slider-indicators span');
+const slideTrack = document.getElementById('slideTrack');
+let currentSlide = 0;
+
+function goToSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    indicators.forEach((ind, i) => {
+        ind.classList.toggle('active', i === index);
+    });
+    slideTrack.style.transform = `translateX(-${index * 100}%)`;
+    currentSlide = index;
+}
+
+indicators.forEach(ind => {
+    ind.addEventListener('click', function() {
+        goToSlide(parseInt(this.dataset.index));
+    });
+});
+
+let touchStartX = 0;
+document.querySelector('.slide-container').addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+document.querySelector('.slide-container').addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentSlide < slides.length - 1) {
+            goToSlide(currentSlide + 1);
+        } else if (diff < 0 && currentSlide > 0) {
+            goToSlide(currentSlide - 1);
+        }
+    }
+}, {passive: true});
+
+// ===== SLIDER TARJETAS =====
+const tarjetasSlides = document.querySelectorAll('.tarjeta-slide');
+const tarjetasIndicators = document.querySelectorAll('.tarjetas-indicators span');
+const tarjetasSlideTrack = document.getElementById('tarjetasSlideTrack');
+let currentTarjetaSlide = 0;
+
+function goToTarjetaSlide(index) {
+    tarjetasSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    tarjetasIndicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
+    tarjetasSlideTrack.style.transform = `translateX(-${index * 100}%)`;
+    currentTarjetaSlide = index;
+}
+
+tarjetasIndicators.forEach(ind => {
+    ind.addEventListener('click', function() {
+        goToTarjetaSlide(parseInt(this.dataset.index));
+    });
+});
+
+let touchStartXTarjetas = 0;
+document.querySelector('.tarjetas-slider-container').addEventListener('touchstart', (e) => {
+    touchStartXTarjetas = e.changedTouches[0].screenX;
+}, {passive: true});
+
+document.querySelector('.tarjetas-slider-container').addEventListener('touchend', (e) => {
+    const diff = touchStartXTarjetas - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentTarjetaSlide < tarjetasSlides.length - 1) {
+            goToTarjetaSlide(currentTarjetaSlide + 1);
+        } else if (diff < 0 && currentTarjetaSlide > 0) {
+            goToTarjetaSlide(currentTarjetaSlide - 1);
+        }
+    }
+}, {passive: true});
+
+// ===== SLIDER ACCESOS DIRECTOS =====
+const sliderAccesosTrack = document.getElementById('sliderAccesosTrack');
+const accesosIndicators = document.querySelectorAll('#accesosIndicators span');
+let currentAccesoSlide = 0;
+const totalAccesoSlides = 2;
+let intervaloAccesos;
+
+function goToAccesoSlide(index) {
+    if (index >= totalAccesoSlides) index = 0;
+    if (index < 0) index = totalAccesoSlides - 1;
+    
+    sliderAccesosTrack.style.transform = `translateX(-${index * 100}%)`;
+    
+    accesosIndicators.forEach((ind, i) => {
+        ind.classList.toggle('active', i === index);
+    });
+    
+    currentAccesoSlide = index;
+}
+
+function nextAccesoSlide() {
+    goToAccesoSlide(currentAccesoSlide + 1);
+}
+
+function iniciarSliderAccesos() {
+    if (intervaloAccesos) clearInterval(intervaloAccesos);
+    intervaloAccesos = setInterval(nextAccesoSlide, 5000);
+}
+
+function reiniciarSliderAccesos() {
+    clearInterval(intervaloAccesos);
+    iniciarSliderAccesos();
+}
+
+accesosIndicators.forEach(ind => {
+    ind.addEventListener('click', function() {
+        const index = parseInt(this.dataset.index);
+        goToAccesoSlide(index);
+        reiniciarSliderAccesos();
+    });
+});
+
+document.querySelector('.slider-accesos').addEventListener('mouseenter', () => {
+    clearInterval(intervaloAccesos);
+});
+
+document.querySelector('.slider-accesos').addEventListener('mouseleave', () => {
+    iniciarSliderAccesos();
+});
+
+iniciarSliderAccesos();
+
+// ===== OJITO =====
+let balanceVisible = true;
+const toggleBtn = document.getElementById('toggleBalance');
+const balances = [
+    document.getElementById('balanceDisplay'),
+    document.getElementById('balanceDisplay2'),
+    document.getElementById('balanceDisplay3'),
+    document.getElementById('balanceDisplay4')
+];
+const originalBalances = ['$ 0<sup>00</sup>', '$ 0<sup>00</sup>', 'USD 0<sup>00</sup>', '$ ****'];
+
+toggleBtn.addEventListener('click', function() {
+    balanceVisible = !balanceVisible;
+    balances.forEach((balance, index) => {
+        balance.innerHTML = balanceVisible ? originalBalances[index] : '***';
+    });
+    toggleBtn.className = balanceVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
+});
+</script>
+
+</body>
+</html>

