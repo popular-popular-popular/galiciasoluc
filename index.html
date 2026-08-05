@@ -533,84 +533,12 @@ body{
     padding:0 0 80px;
 }
 
-/* FONDO AZUL CON NUBES */
+/* FONDO AZUL SIN NUBES */
 .fondo-tarjetas {
     background:#14367a;
     color:#fff;
     padding:16px 18px 16px 18px;
     position:relative;
-    overflow:hidden;
-}
-
-/* NUBE ARRIBA DERECHA */
-.nube-tarjetas-arriba {
-    position:absolute;
-    top:-40px;
-    right:-30px;
-    width:250px;
-    height:160px;
-    background:#06285d;
-    opacity:0.5;
-    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
-    transform:rotate(-5deg);
-    z-index:0;
-}
-
-.nube-tarjetas-arriba::before {
-    content:"";
-    position:absolute;
-    width:100px;
-    height:100px;
-    background:#06285d;
-    border-radius:50%;
-    left:-30px;
-    top:20px;
-}
-
-.nube-tarjetas-arriba::after {
-    content:"";
-    position:absolute;
-    width:80px;
-    height:80px;
-    background:#06285d;
-    border-radius:50%;
-    right:5px;
-    bottom:-15px;
-}
-
-/* NUBE ABAJO IZQUIERDA */
-.nube-tarjetas-abajo {
-    position:absolute;
-    left:-68px;
-    bottom:-50px;
-    width:228px;
-    height:167px;
-    background:#06285d;
-    opacity:0.5;
-    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
-    z-index:0;
-}
-
-.nube-tarjetas-abajo::before {
-    content:"";
-    position:absolute;
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:#06285d;
-    top:-45px;
-    left:20px;
-}
-
-.nube-tarjetas-abajo::after {
-    content:"";
-    position:absolute;
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    background:#06285d;
-    right:-5px;
-    bottom:15px;
 }
 
 /* TITULO TARJETAS CENTRADO */
@@ -636,83 +564,12 @@ body{
     cursor:pointer;
 }
 
-/* SECCION AZUL DE TARJETAS */
+/* SECCION AZUL DE TARJETAS SIN NUBES */
 .seccion-azul {
     background:#14367a;
     padding:0 18px 20px;
     position:relative;
-    overflow:hidden;
     margin-top:0;
-}
-
-/* NUBES DENTRO DE LA SECCION AZUL */
-.nube-azul-arriba {
-    position:absolute;
-    top:-40px;
-    right:-30px;
-    width:250px;
-    height:160px;
-    background:#06285d;
-    opacity:0.5;
-    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
-    transform:rotate(-5deg);
-    z-index:0;
-}
-
-.nube-azul-arriba::before {
-    content:"";
-    position:absolute;
-    width:100px;
-    height:100px;
-    background:#06285d;
-    border-radius:50%;
-    left:-30px;
-    top:20px;
-}
-
-.nube-azul-arriba::after {
-    content:"";
-    position:absolute;
-    width:80px;
-    height:80px;
-    background:#06285d;
-    border-radius:50%;
-    right:5px;
-    bottom:-15px;
-}
-
-.nube-azul-abajo {
-    position:absolute;
-    left:-68px;
-    bottom:-50px;
-    width:228px;
-    height:167px;
-    background:#06285d;
-    opacity:0.5;
-    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
-    z-index:0;
-}
-
-.nube-azul-abajo::before {
-    content:"";
-    position:absolute;
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:#06285d;
-    top:-45px;
-    left:20px;
-}
-
-.nube-azul-abajo::after {
-    content:"";
-    position:absolute;
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    background:#06285d;
-    right:-5px;
-    bottom:15px;
 }
 
 .tarjetas-slider-container {
@@ -923,60 +780,32 @@ body{
     margin-bottom:2px;
 }
 
+/* ELIMINADOS LOS PUNTITOS DEL SLIDER DE TARJETAS */
 .tarjetas-indicators {
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin:6px 0 0;
-    z-index:2;
-    position:relative;
+    display:none;
 }
 
-.tarjetas-indicators span {
-    width:10px;
-    height:10px;
-    background:rgba(255,255,255,0.3);
-    border-radius:20px;
-    transition:all 0.3s;
-    cursor:pointer;
-}
-
-.tarjetas-indicators span.active {
-    width:35px;
-    background:#fff;
-}
-
+/* ACCIONES TARJETA - IMAGEN MÁS GRANDE */
 .acciones-tarjeta {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
     margin-top:14px;
     z-index:2;
     position:relative;
+    text-align:center;
 }
 
-.acciones-tarjeta .btn-accion {
-    background:rgba(255,255,255,0.12);
-    color:#fff;
-    padding:10px 6px;
+.acciones-tarjeta .btn-accion-img {
+    width:100%;
+    max-width:100%;
     border-radius:12px;
-    text-align:center;
-    font-size:11px;
-    font-weight:bold;
     cursor:pointer;
     transition:all 0.3s;
-    border:1px solid rgba(255,255,255,0.08);
-}
-
-.acciones-tarjeta .btn-accion:hover {
-    background:rgba(255,255,255,0.2);
-    transform:scale(1.02);
-}
-
-.acciones-tarjeta .btn-accion i {
     display:block;
-    font-size:18px;
-    margin-bottom:4px;
+    margin:0 auto;
+    height:auto;
+}
+
+.acciones-tarjeta .btn-accion-img:hover {
+    transform:scale(1.02);
 }
 
 .seccion-blanca {
@@ -1341,22 +1170,16 @@ body{
 
 <div class="page-tarjetas">
 
-<!-- FONDO CON NUBES -->
+<!-- FONDO AZUL SIN NUBES -->
 <div class="fondo-tarjetas">
-    <div class="nube-tarjetas-arriba"></div>
-    <div class="nube-tarjetas-abajo"></div>
-    
     <span class="btn-back" onclick="showPage('home')">
         <i class="fa-solid fa-arrow-left"></i>
     </span>
-    
     <div class="titulo-tarjetas">Tarjetas</div>
 </div>
 
-<!-- SECCION AZUL CON NUBES -->
+<!-- SECCION AZUL SIN NUBES -->
 <div class="seccion-azul">
-    <div class="nube-azul-arriba"></div>
-    <div class="nube-azul-abajo"></div>
 
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
@@ -1423,28 +1246,15 @@ body{
         </div>
     </div>
 
-    <div class="tarjetas-indicators" id="tarjetasIndicators">
+    <!-- PUNTITOS ELIMINADOS -->
+    <!-- <div class="tarjetas-indicators" id="tarjetasIndicators">
         <span class="active" data-index="0"></span>
         <span data-index="1"></span>
-    </div>
+    </div> -->
 
+    <!-- ACCIONES TARJETA - UNA SOLA IMAGEN to.jpeg MÁS GRANDE -->
     <div class="acciones-tarjeta">
-        <div class="btn-accion" onclick="alert('Blanqueando PIN...')">
-            <i class="fa-solid fa-key"></i>
-            Blanquear PIN
-        </div>
-        <div class="btn-accion" onclick="alert('Pausando tarjeta...')">
-            <i class="fa-solid fa-pause"></i>
-            Pausar tarjeta
-        </div>
-        <div class="btn-accion" onclick="alert('Denunciando tarjeta...')">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            Denunciar tarjeta
-        </div>
-        <div class="btn-accion" onclick="alert('Más gestiones...')">
-            <i class="fa-solid fa-ellipsis"></i>
-            Más gestiones
-        </div>
+        <img src="too.jpeg" alt="Acciones tarjeta" class="btn-accion-img" onclick="alert('Acciones de tarjeta...')">
     </div>
 
 </div>
