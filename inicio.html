@@ -979,6 +979,18 @@ body{
     margin-bottom:4px;
 }
 
+.acciones-tarjeta .btn-accion-img {
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.acciones-tarjeta .btn-accion-img:hover {
+    transform:scale(1.05);
+}
+
 .seccion-blanca {
     background:#f5f7fa;
     padding:18px;
@@ -1296,9 +1308,9 @@ body{
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span data-index="1"></span>
-        <span data-index="2"></span>
-        <span data-index="3"></span>
+        <span class="active" data-index="1"></span>
+        <span class="active" data-index="2"></span>
+        <span class="active" data-index="3"></span>
     </div>
 
 </div>
@@ -1429,10 +1441,9 @@ body{
     </div>
 
     <div class="acciones-tarjeta">
-        <div class="btn-accion" onclick="alert('Blanqueando PIN...')">
-            <i class="fa-solid fa-key"></i>
-            Blanquear PIN
-        </div>
+        <!-- IMAGEN PIN -->
+        <img src="pin.jpeg" alt="Blanquear PIN" class="btn-accion-img" onclick="alert('Blanqueando PIN...')">
+        
         <div class="btn-accion" onclick="alert('Pausando tarjeta...')">
             <i class="fa-solid fa-pause"></i>
             Pausar tarjeta
