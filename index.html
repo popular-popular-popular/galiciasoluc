@@ -825,14 +825,14 @@ body{
 .tarjeta-item.debito .tipo {
     display:flex;
     justify-content:space-between;
-    align-items:flex-start;
+    align-items:center;
     margin-bottom:10px;
 }
 
 .tarjeta-item.debito .tipo-left {
     display:flex;
-    flex-direction:column;
-    gap:2px;
+    align-items:center;
+    gap:12px;
 }
 
 .tarjeta-item.debito .tipo-left .visa-title {
@@ -1292,7 +1292,7 @@ body{
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
-            <!-- TARJETA VISA - CRÉDITO (blanca, sin Virtual) -->
+            <!-- TARJETA VISA - CRÉDITO (blanca) -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
@@ -1318,16 +1318,16 @@ body{
                 </div>
             </div>
 
-            <!-- TARJETA DÉBITO VIRTUAL (salmón, con Virtual) -->
+            <!-- TARJETA DÉBITO VIRTUAL (salmón, con Virtual al lado de VISA) -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
                         <div class="tipo-left">
                             <span class="visa-title">VISA</span>
+                            <span class="virtual-badge">Virtual</span>
                             <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                            <span class="virtual-badge">Virtual</span>
                             <span class="mostrar-datos">Mostrar datos</span>
                         </div>
                     </div>
