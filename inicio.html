@@ -946,32 +946,26 @@ body{
     background:#fff;
 }
 
-/* ACCIONES TARJETA - IMÁGENES */
+/* ACCIONES TARJETA - UNA SOLA IMAGEN */
 .acciones-tarjeta {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
     margin-top:14px;
     z-index:2;
     position:relative;
+    text-align:center;
 }
 
 .acciones-tarjeta .btn-accion-img {
     width:100%;
-    max-width:65px;
-    height:65px;
-    object-fit:cover;
-    display:block;
-    margin:0 auto;
+    max-width:200px;
+    border-radius:12px;
     cursor:pointer;
     transition:all 0.3s;
-    border-radius:12px;
-    border:2px solid rgba(255,255,255,0.15);
+    display:block;
+    margin:0 auto;
 }
 
 .acciones-tarjeta .btn-accion-img:hover {
-    transform:scale(1.08);
-    border-color:rgba(255,255,255,0.4);
+    transform:scale(1.02);
 }
 
 .seccion-blanca {
@@ -1423,12 +1417,9 @@ body{
         <span data-index="1"></span>
     </div>
 
-    <!-- ACCIONES TARJETA CON IMÁGENES to.jpeg -->
+    <!-- ACCIONES TARJETA - UNA SOLA IMAGEN to.jpeg -->
     <div class="acciones-tarjeta">
-        <img src="to.jpeg" alt="Blanquear PIN" class="btn-accion-img" onclick="alert('Blanqueando PIN...')">
-        <img src="to.jpeg" alt="Pausar tarjeta" class="btn-accion-img" onclick="alert('Pausando tarjeta...')">
-        <img src="to.jpeg" alt="Denunciar tarjeta" class="btn-accion-img" onclick="alert('Denunciando tarjeta...')">
-        <img src="to.jpeg" alt="Más gestiones" class="btn-accion-img" onclick="alert('Más gestiones...')">
+        <img src="to.jpeg" alt="Acciones tarjeta" class="btn-accion-img" onclick="alert('Acciones de tarjeta...')">
     </div>
 
 </div>
