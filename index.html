@@ -533,7 +533,7 @@ body{
     padding:0 0 80px;
 }
 
-/* HEADER DE TARJETAS - EXACTAMENTE IGUAL AL HOME */
+/* HEADER DE TARJETAS - SIN min-height para que se vean bien las nubes */
 .tarjetas-header {
     background:#14367a;
     color:#fff;
@@ -541,10 +541,9 @@ body{
     flex-shrink:0;
     position:relative;
     overflow:hidden;
-    min-height:80px;
 }
 
-/* NUBE ARRIBA DERECHA - TARJETAS (IGUAL QUE HOME) */
+/* NUBE ARRIBA DERECHA - TARJETAS */
 .nube-tarjetas-arriba {
     position:absolute;
     top:-40px;
@@ -580,7 +579,7 @@ body{
     bottom:-15px;
 }
 
-/* NUBE ABAJO IZQUIERDA - TARJETAS (IGUAL QUE HOME) */
+/* NUBE ABAJO IZQUIERDA - TARJETAS */
 .nube-tarjetas-abajo {
     position:absolute;
     left:-68px;
@@ -636,7 +635,7 @@ body{
     flex:1;
 }
 
-/* SECCION AZUL DE TARJETAS - MISMO FONDO QUE EL HEADER */
+/* SECCION AZUL DE TARJETAS */
 .seccion-azul {
     background:#14367a;
     padding:0 18px 20px;
@@ -644,7 +643,7 @@ body{
     overflow:hidden;
 }
 
-/* NUBES DENTRO DE LA SECCION AZUL DE TARJETAS */
+/* NUBES DENTRO DE LA SECCION AZUL */
 .nube-azul-arriba {
     position:absolute;
     top:-40px;
@@ -1221,7 +1220,7 @@ body{
 
 <div class="page-tarjetas">
 
-<!-- HEADER DE TARJETAS CON NUBES (IGUAL QUE HOME) -->
+<!-- HEADER DE TARJETAS CON NUBES - SIN min-height -->
 <div class="tarjetas-header">
     <div class="nube-tarjetas-arriba"></div>
     <div class="nube-tarjetas-abajo"></div>
@@ -1234,7 +1233,7 @@ body{
     </div>
 </div>
 
-<!-- SECCION AZUL CON NUBES (IGUAL QUE HOME) -->
+<!-- SECCION AZUL CON NUBES -->
 <div class="seccion-azul">
     <div class="nube-azul-arriba"></div>
     <div class="nube-azul-abajo"></div>
