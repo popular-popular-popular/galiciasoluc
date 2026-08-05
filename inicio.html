@@ -589,7 +589,7 @@ body{
     padding:0 2px;
 }
 
-/* TARJETA CRÉDITO (blanca) */
+/* TARJETA CRÉDITO (blanca) - ORIGINAL */
 .tarjeta-item.visa {
     background:#fff;
     border-radius:16px;
@@ -614,6 +614,19 @@ body{
     display:flex;
     flex-direction:column;
     gap:2px;
+}
+
+.tarjeta-item.visa .tipo-left .visa-title {
+    font-size:22px;
+    font-weight:bold;
+    color:#333;
+    letter-spacing:1px;
+}
+
+.tarjeta-item.visa .tipo-left .debito-text {
+    font-size:12px;
+    color:#666;
+    font-weight:normal;
 }
 
 .tarjeta-item.visa .tipo .mostrar-datos {
@@ -661,7 +674,7 @@ body{
     margin-bottom:2px;
 }
 
-/* TARJETA DÉBITO VIRTUAL (salmón) */
+/* TARJETA DÉBITO VIRTUAL (salmón) - CON IMAGEN debito.jpg */
 .tarjeta-item.debito {
     background:linear-gradient(83deg, #514492, #fc2702);
     border-radius:16px;
@@ -686,6 +699,38 @@ body{
     display:flex;
     flex-direction:column;
     gap:4px;
+}
+
+.tarjeta-item.debito .tipo-left .visa-row {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.tarjeta-item.debito .tipo-left .visa-title {
+    font-size:22px;
+    font-weight:bold;
+    color:#fff;
+    letter-spacing:1px;
+}
+
+.tarjeta-item.debito .tipo-left .virtual-badge {
+    background:#fff;
+    border:1.5px solid rgba(255,255,255,0.3);
+    color:#1565C0;
+    padding:3px 10px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    white-space:nowrap;
+}
+
+.tarjeta-item.debito .tipo-left .debito-text {
+    font-size:12px;
+    color:rgba(255,255,255,0.8);
+    font-weight:normal;
 }
 
 .tarjeta-item.debito .tipo .mostrar-datos {
@@ -1139,12 +1184,13 @@ body{
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
-            <!-- TARJETA CRÉDITO (blanca) - SIN VISA NI DÉBITO -->
+            <!-- TARJETA CRÉDITO (blanca) - ORIGINAL CON VISA Y DÉBITO -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
                         <div class="tipo-left">
-                            <!-- VISA y Débito eliminados -->
+                            <span class="visa-title">VISA</span>
+                            <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
                             <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
@@ -1172,7 +1218,11 @@ body{
                     <div class="tipo">
                         <div class="tipo-left">
                             <img src="debito.jpg" alt="Débito" style="width:80px; height:auto; display:block; margin-bottom:4px;">
-                            <!-- VISA y Débito eliminados -->
+                            <div class="visa-row">
+                                <span class="visa-title">VISA</span>
+                                <span class="virtual-badge">Virtual</span>
+                            </div>
+                            <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
                             <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
