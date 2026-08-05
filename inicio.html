@@ -674,7 +674,7 @@ body{
     margin-bottom:2px;
 }
 
-/* TARJETA DÉBITO VIRTUAL (salmón) - CON IMAGEN debito.jpg */
+/* TARJETA DÉBITO VIRTUAL (salmón) - SOLO CON LA IMAGEN debito.jpg */
 .tarjeta-item.debito {
     background:linear-gradient(83deg, #514492, #fc2702);
     border-radius:16px;
@@ -701,36 +701,11 @@ body{
     gap:4px;
 }
 
-.tarjeta-item.debito .tipo-left .visa-row {
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.tarjeta-item.debito .tipo-left .visa-title {
-    font-size:22px;
-    font-weight:bold;
-    color:#fff;
-    letter-spacing:1px;
-}
-
-.tarjeta-item.debito .tipo-left .virtual-badge {
-    background:#fff;
-    border:1.5px solid rgba(255,255,255,0.3);
-    color:#1565C0;
-    padding:3px 10px;
-    border-radius:20px;
-    font-size:10px;
-    font-weight:bold;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    white-space:nowrap;
-}
-
-.tarjeta-item.debito .tipo-left .debito-text {
-    font-size:12px;
-    color:rgba(255,255,255,0.8);
-    font-weight:normal;
+.tarjeta-item.debito .tipo-left .img-debito {
+    width:80px;
+    height:auto;
+    display:block;
+    margin-bottom:4px;
 }
 
 .tarjeta-item.debito .tipo .mostrar-datos {
@@ -1125,7 +1100,7 @@ body{
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span data-index="1"></span>
+        <span class="data-index="1"></span>
         <span data-index="2"></span>
         <span data-index="3"></span>
     </div>
@@ -1212,17 +1187,12 @@ body{
                 </div>
             </div>
 
-            <!-- TARJETA DÉBITO VIRTUAL (salmón) - CON IMAGEN debito.jpg -->
+            <!-- TARJETA DÉBITO VIRTUAL (salmón) - SOLO CON LA IMAGEN debito.jpg -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
                         <div class="tipo-left">
-                            <img src="debito.jpg" alt="Débito" style="width:80px; height:auto; display:block; margin-bottom:4px;">
-                            <div class="visa-row">
-                                <span class="visa-title">VISA</span>
-                                <span class="virtual-badge">Virtual</span>
-                            </div>
-                            <span class="debito-text">Débito</span>
+                            <img src="debito.jpg" alt="Débito" class="img-debito">
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
                             <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
