@@ -589,7 +589,7 @@ body{
     padding:0 2px;
 }
 
-/* TARJETA VISA - CRÉDITO (blanca) - MÁS ANGOSTA */
+/* TARJETA CRÉDITO (blanca) - ORIGINAL */
 .tarjeta-item.visa {
     background:#fff;
     border-radius:16px;
@@ -674,9 +674,9 @@ body{
     margin-bottom:2px;
 }
 
-/* TARJETA DÉBITO VIRTUAL (salmón) - MÁS ANGOSTA */
+/* TARJETA DÉBITO VIRTUAL (salmón) - CON IMAGEN Y VIRTUAL AL LADO */
 .tarjeta-item.debito {
-    background:linear-gradient(83deg, #514492, #fc2702);
+    background:#f52400;
     border-radius:16px;
     padding:25px 18px;
     box-shadow:0 4px 15px rgba(0,0,0,.25);
@@ -701,17 +701,16 @@ body{
     gap:4px;
 }
 
-.tarjeta-item.debito .tipo-left .visa-row {
+.tarjeta-item.debito .tipo-left .img-virtual-row {
     display:flex;
     align-items:center;
     gap:10px;
 }
 
-.tarjeta-item.debito .tipo-left .visa-title {
-    font-size:22px;
-    font-weight:bold;
-    color:#fff;
-    letter-spacing:1px;
+.tarjeta-item.debito .tipo-left .img-debito {
+    width:80px;
+    height:auto;
+    display:block;
 }
 
 .tarjeta-item.debito .tipo-left .virtual-badge {
@@ -725,12 +724,6 @@ body{
     text-transform:uppercase;
     letter-spacing:0.5px;
     white-space:nowrap;
-}
-
-.tarjeta-item.debito .tipo-left .debito-text {
-    font-size:12px;
-    color:rgba(255,255,255,0.8);
-    font-weight:normal;
 }
 
 .tarjeta-item.debito .tipo .mostrar-datos {
@@ -1184,7 +1177,7 @@ body{
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
-            <!-- TARJETA VISA - CRÉDITO (blanca) -->
+            <!-- TARJETA CRÉDITO (blanca) - ORIGINAL CON VISA Y DÉBITO -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
@@ -1212,16 +1205,15 @@ body{
                 </div>
             </div>
 
-            <!-- TARJETA DÉBITO VIRTUAL (salmón) -->
+            <!-- TARJETA DÉBITO VIRTUAL (salmón) - IMAGEN + VIRTUAL AL LADO -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
                         <div class="tipo-left">
-                            <div class="visa-row">
-                                <span class="visa-title">VISA</span>
+                            <div class="img-virtual-row">
+                                <img src="debito.jpeg" alt="Débito" class="img-debito">
                                 <span class="virtual-badge">Virtual</span>
                             </div>
-                            <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
                             <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
@@ -1252,7 +1244,7 @@ body{
         <span data-index="1"></span>
     </div> -->
 
-    <!-- ACCIONES TARJETA - UNA SOLA IMAGEN to.jpeg MÁS GRANDE -->
+    <!-- ACCIONES TARJETA - UNA SOLA IMAGEN too.jpeg -->
     <div class="acciones-tarjeta">
         <img src="too.jpeg" alt="Acciones tarjeta" class="btn-accion-img" onclick="alert('Acciones de tarjeta...')">
     </div>
