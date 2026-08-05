@@ -111,15 +111,15 @@ body{
 
 /* NUBE ABAJO IZQUIERDA */
 .nube-abajo {
-   position: absolute;
-    left: -68px;
-    bottom: -50px;
-    width: 228px;
-    height: 167px;
-    background: #06285d;
-    opacity: 0.5;
-    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
-    z-index: 0;
+    position:absolute;
+    left:-68px;
+    bottom:-50px;
+    width:228px;
+    height:167px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index:0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -204,20 +204,20 @@ body{
 }
 
 .btn-ir-cuentas{
-   margin: 12px auto 8px;
-    width: 113px;
-    background: #fff;
-    color: #1a3a7a;
-    padding: 8px 12px;
-    border-radius: 25px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 14px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    z-index: 2;
+    margin:12px auto 8px;
+    width:113px;
+    background:#fff;
+    color:#1a3a7a;
+    padding:8px 12px;
+    border-radius:25px;
+    text-align:center;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
+    backdrop-filter:blur(5px);
+    border:1px solid rgba(255,255,255,0.2);
+    position:relative;
+    z-index:2;
 }
 
 .btn-ir-cuentas:hover{
@@ -533,11 +533,85 @@ body{
     padding:0 0 80px;
 }
 
+/* Header de tarjetas CON NUBES */
 .tarjetas-header {
-    background:linear-gradient(180deg, #0a1628 0%, #1a2a5e 40%, #1a3a7a 70%, #2a5a9a 100%);
+    background:#14367a;
     color:#fff;
     padding:16px 18px 20px;
     position:relative;
+    overflow:hidden;
+    min-height:80px;
+}
+
+/* NUBE ARRIBA DERECHA - TARJETAS */
+.nube-tarjetas-arriba {
+    position:absolute;
+    top:-40px;
+    right:-30px;
+    width:250px;
+    height:160px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
+    transform:rotate(-5deg);
+    z-index:0;
+}
+
+.nube-tarjetas-arriba::before {
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#06285d;
+    border-radius:50%;
+    left:-30px;
+    top:20px;
+}
+
+.nube-tarjetas-arriba::after {
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#06285d;
+    border-radius:50%;
+    right:5px;
+    bottom:-15px;
+}
+
+/* NUBE ABAJO IZQUIERDA - TARJETAS */
+.nube-tarjetas-abajo {
+    position:absolute;
+    left:-68px;
+    bottom:-50px;
+    width:228px;
+    height:167px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index:0;
+}
+
+.nube-tarjetas-abajo::before {
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#06285d;
+    top:-45px;
+    left:20px;
+}
+
+.nube-tarjetas-abajo::after {
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#06285d;
+    right:-5px;
+    bottom:15px;
 }
 
 .tarjetas-header .top-tarjetas {
@@ -1020,11 +1094,10 @@ body{
         </div>
     </div>
 
-    <!-- INDICADORES DEL SLIDER HOME -->
-   
-    <!-- IMAGEN TOQUE - SOLO IMAGEN ESTATICA, SIN INDICADORES -->
+    <!-- IMAGEN TOQUE -->
     <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
- <div class="slider-indicators" id="indicators">
+
+    <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
         <span data-index="1"></span>
         <span data-index="2"></span>
@@ -1070,12 +1143,18 @@ body{
 
 </div><!-- end page-home -->
 
-<!-- ===== PÁGINA TARJETAS ===== -->
+<!-- ===== PÁGINA TARJETAS CON NUBES ===== -->
 <div class="page" id="page-tarjetas">
 
 <div class="page-tarjetas">
 
+<!-- Header de tarjetas con nubes -->
 <div class="tarjetas-header">
+    <!-- NUBE ARRIBA DERECHA -->
+    <div class="nube-tarjetas-arriba"></div>
+    <!-- NUBE ABAJO IZQUIERDA -->
+    <div class="nube-tarjetas-abajo"></div>
+    
     <div class="top-tarjetas">
         <span class="back-btn" onclick="showPage('home')">
             <i class="fa-solid fa-arrow-left"></i>
