@@ -533,17 +533,18 @@ body{
     padding:0 0 80px;
 }
 
-/* Header de tarjetas CON NUBES */
+/* HEADER DE TARJETAS - EXACTAMENTE IGUAL AL HOME */
 .tarjetas-header {
     background:#14367a;
     color:#fff;
     padding:16px 18px 20px;
+    flex-shrink:0;
     position:relative;
     overflow:hidden;
     min-height:80px;
 }
 
-/* NUBE ARRIBA DERECHA - TARJETAS */
+/* NUBE ARRIBA DERECHA - TARJETAS (IGUAL QUE HOME) */
 .nube-tarjetas-arriba {
     position:absolute;
     top:-40px;
@@ -579,7 +580,7 @@ body{
     bottom:-15px;
 }
 
-/* NUBE ABAJO IZQUIERDA - TARJETAS */
+/* NUBE ABAJO IZQUIERDA - TARJETAS (IGUAL QUE HOME) */
 .nube-tarjetas-abajo {
     position:absolute;
     left:-68px;
@@ -635,10 +636,82 @@ body{
     flex:1;
 }
 
+/* SECCION AZUL DE TARJETAS - MISMO FONDO QUE EL HEADER */
 .seccion-azul {
-    background:linear-gradient(180deg, #0a1628 0%, #1a2a5e 40%, #1a3a7a 70%, #2a5a9a 100%);
+    background:#14367a;
     padding:0 18px 20px;
     position:relative;
+    overflow:hidden;
+}
+
+/* NUBES DENTRO DE LA SECCION AZUL DE TARJETAS */
+.nube-azul-arriba {
+    position:absolute;
+    top:-40px;
+    right:-30px;
+    width:250px;
+    height:160px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:60% 40% 70% 30% / 40% 50% 50% 60%;
+    transform:rotate(-5deg);
+    z-index:0;
+}
+
+.nube-azul-arriba::before {
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#06285d;
+    border-radius:50%;
+    left:-30px;
+    top:20px;
+}
+
+.nube-azul-arriba::after {
+    content:"";
+    position:absolute;
+    width:80px;
+    height:80px;
+    background:#06285d;
+    border-radius:50%;
+    right:5px;
+    bottom:-15px;
+}
+
+.nube-azul-abajo {
+    position:absolute;
+    left:-68px;
+    bottom:-50px;
+    width:228px;
+    height:167px;
+    background:#06285d;
+    opacity:0.5;
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index:0;
+}
+
+.nube-azul-abajo::before {
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#06285d;
+    top:-45px;
+    left:20px;
+}
+
+.nube-azul-abajo::after {
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#06285d;
+    right:-5px;
+    bottom:15px;
 }
 
 .tarjetas-slider-container {
@@ -1143,16 +1216,14 @@ body{
 
 </div><!-- end page-home -->
 
-<!-- ===== PÁGINA TARJETAS CON NUBES ===== -->
+<!-- ===== PÁGINA TARJETAS ===== -->
 <div class="page" id="page-tarjetas">
 
 <div class="page-tarjetas">
 
-<!-- Header de tarjetas con nubes -->
+<!-- HEADER DE TARJETAS CON NUBES (IGUAL QUE HOME) -->
 <div class="tarjetas-header">
-    <!-- NUBE ARRIBA DERECHA -->
     <div class="nube-tarjetas-arriba"></div>
-    <!-- NUBE ABAJO IZQUIERDA -->
     <div class="nube-tarjetas-abajo"></div>
     
     <div class="top-tarjetas">
@@ -1163,7 +1234,10 @@ body{
     </div>
 </div>
 
+<!-- SECCION AZUL CON NUBES (IGUAL QUE HOME) -->
 <div class="seccion-azul">
+    <div class="nube-azul-arriba"></div>
+    <div class="nube-azul-abajo"></div>
 
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
