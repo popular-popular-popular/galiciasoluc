@@ -533,17 +533,16 @@ body{
     padding:0 0 80px;
 }
 
-/* HEADER DE TARJETAS - SIN min-height para que se vean bien las nubes */
-.tarjetas-header {
+/* FONDO AZUL CON NUBES - SIN HEADER */
+.fondo-tarjetas {
     background:#14367a;
     color:#fff;
-    padding:16px 18px 20px;
-    flex-shrink:0;
+    padding:20px 18px 20px;
     position:relative;
     overflow:hidden;
 }
 
-/* NUBE ARRIBA DERECHA - TARJETAS */
+/* NUBE ARRIBA DERECHA */
 .nube-tarjetas-arriba {
     position:absolute;
     top:-40px;
@@ -579,7 +578,7 @@ body{
     bottom:-15px;
 }
 
-/* NUBE ABAJO IZQUIERDA - TARJETAS */
+/* NUBE ABAJO IZQUIERDA */
 .nube-tarjetas-abajo {
     position:absolute;
     left:-68px;
@@ -614,25 +613,27 @@ body{
     bottom:15px;
 }
 
-.tarjetas-header .top-tarjetas {
-    display:flex;
-    align-items:center;
-    gap:15px;
+/* TITULO TARJETAS CENTRADO */
+.titulo-tarjetas {
+    text-align:center;
     position:relative;
     z-index:2;
+    font-size:20px;
+    font-weight:bold;
+    color:#fff;
+    padding:5px 0 10px 0;
 }
 
-.tarjetas-header .back-btn {
+/* FLECHA VOLVER */
+.btn-back {
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:3;
     font-size:22px;
     color:#fff;
     cursor:pointer;
-    padding:5px;
-}
-
-.tarjetas-header h1 {
-    font-size:20px;
-    color:#fff;
-    flex:1;
 }
 
 /* SECCION AZUL DE TARJETAS */
@@ -1220,17 +1221,16 @@ body{
 
 <div class="page-tarjetas">
 
-<!-- HEADER DE TARJETAS CON NUBES - SIN min-height -->
-<div class="tarjetas-header">
+<!-- FONDO CON NUBES Y TITULO CENTRADO -->
+<div class="fondo-tarjetas">
     <div class="nube-tarjetas-arriba"></div>
     <div class="nube-tarjetas-abajo"></div>
     
-    <div class="top-tarjetas">
-        <span class="back-btn" onclick="showPage('home')">
-            <i class="fa-solid fa-arrow-left"></i>
-        </span>
-        <h1>Tarjetas</h1>
-    </div>
+    <span class="btn-back" onclick="showPage('home')">
+        <i class="fa-solid fa-arrow-left"></i>
+    </span>
+    
+    <div class="titulo-tarjetas">Tarjetas</div>
 </div>
 
 <!-- SECCION AZUL CON NUBES -->
