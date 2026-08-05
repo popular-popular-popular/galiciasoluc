@@ -111,15 +111,15 @@ body{
 
 /* NUBE ABAJO IZQUIERDA */
 .nube-abajo {
-    position:absolute;
-    left:-68px;
-    bottom:-50px;
-    width:228px;
-    height:167px;
-    background:#06285d;
-    opacity:0.5;
-    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
-    z-index:0;
+   position: absolute;
+    left: -68px;
+    bottom: -50px;
+    width: 228px;
+    height: 167px;
+    background: #06285d;
+    opacity: 0.5;
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index: 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -204,20 +204,20 @@ body{
 }
 
 .btn-ir-cuentas{
-    margin:12px auto 8px;
-    width:113px;
-    background:#fff;
-    color:#1a3a7a;
-    padding:8px 12px;
-    border-radius:25px;
-    text-align:center;
-    font-weight:bold;
-    cursor:pointer;
-    font-size:14px;
-    backdrop-filter:blur(5px);
-    border:1px solid rgba(255,255,255,0.2);
-    position:relative;
-    z-index:2;
+   margin: 12px auto 8px;
+    width: 113px;
+    background: #fff;
+    color: #1a3a7a;
+    padding: 8px 12px;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
 }
 
 .btn-ir-cuentas:hover{
@@ -313,6 +313,7 @@ body{
     color:#fff;
 }
 
+/* IMAGEN TOQUE - SOLO IMAGEN ESTATICA */
 .img-toque {
     width:100%;
     border-radius:12px;
@@ -376,6 +377,7 @@ body{
     font-size:16px;
 }
 
+/* SLIDER DE ACCESOS DIRECTOS */
 .slider-accesos {
     position:relative;
     overflow:hidden;
@@ -395,6 +397,7 @@ body{
     cursor:pointer;
 }
 
+/* INDICADORES DEL SLIDER DE ACCESOS DIRECTOS */
 .accesos-indicators {
     display:flex;
     justify-content:center;
@@ -417,6 +420,7 @@ body{
     border-radius:10px;
 }
 
+/* BENEFICIOS */
 .beneficios-section {
     margin-top:22px;
 }
@@ -440,6 +444,7 @@ body{
     box-shadow:0 5px 20px rgba(0,0,0,.12);
 }
 
+/* RECOMENDACIONES */
 .recomendaciones {
     margin-top:22px;
     margin-bottom:10px;
@@ -464,6 +469,7 @@ body{
     box-shadow:0 5px 20px rgba(0,0,0,.12);
 }
 
+/* Slider */
 .slide-container {
     overflow:hidden;
     position:relative;
@@ -527,6 +533,7 @@ body{
     padding:0 0 80px;
 }
 
+/* FONDO AZUL CON NUBES */
 .fondo-tarjetas {
     background:#14367a;
     color:#fff;
@@ -535,6 +542,7 @@ body{
     overflow:hidden;
 }
 
+/* NUBE ARRIBA DERECHA */
 .nube-tarjetas-arriba {
     position:absolute;
     top:-40px;
@@ -570,6 +578,7 @@ body{
     bottom:-15px;
 }
 
+/* NUBE ABAJO IZQUIERDA */
 .nube-tarjetas-abajo {
     position:absolute;
     left:-68px;
@@ -604,6 +613,7 @@ body{
     bottom:15px;
 }
 
+/* TITULO TARJETAS CENTRADO */
 .titulo-tarjetas {
     text-align:center;
     position:relative;
@@ -614,6 +624,7 @@ body{
     padding:5px 0 10px 0;
 }
 
+/* FLECHA VOLVER */
 .btn-back {
     position:absolute;
     left:18px;
@@ -625,6 +636,7 @@ body{
     cursor:pointer;
 }
 
+/* SECCION AZUL DE TARJETAS */
 .seccion-azul {
     background:#14367a;
     padding:0 18px 20px;
@@ -633,6 +645,7 @@ body{
     margin-top:0;
 }
 
+/* NUBES DENTRO DE LA SECCION AZUL */
 .nube-azul-arriba {
     position:absolute;
     top:-40px;
@@ -719,7 +732,7 @@ body{
     padding:0 2px;
 }
 
-/* TARJETA VISA */
+/* TARJETA VISA - CRÉDITO (blanca) */
 .tarjeta-item.visa {
     background:#fff;
     border-radius:16px;
@@ -756,19 +769,6 @@ body{
     font-size:13px;
     color:#666;
     font-weight:normal;
-}
-
-.tarjeta-item.visa .tipo .virtual-badge {
-    background:#fff;
-    border:1.5px solid #1565C0;
-    color:#1565C0;
-    padding:4px 12px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:bold;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    white-space:nowrap;
 }
 
 .tarjeta-item.visa .tipo .mostrar-datos {
@@ -809,7 +809,7 @@ body{
     margin-bottom:3px;
 }
 
-/* TARJETA DÉBITO */
+/* TARJETA DÉBITO VIRTUAL (salmón) */
 .tarjeta-item.debito {
     background:linear-gradient(135deg, #f5a623, #e88a1e);
     border-radius:16px;
@@ -849,9 +849,9 @@ body{
 }
 
 .tarjeta-item.debito .tipo .virtual-badge {
-    background:rgba(255,255,255,0.2);
-    border:1px solid rgba(255,255,255,0.3);
-    color:#fff;
+    background:#fff;
+    border:1.5px solid rgba(255,255,255,0.3);
+    color:#1565C0;
     padding:4px 12px;
     border-radius:20px;
     font-size:11px;
@@ -1222,6 +1222,7 @@ body{
         </div>
     </div>
 
+    <!-- IMAGEN TOQUE -->
     <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
 
     <div class="slider-indicators" id="indicators">
@@ -1271,6 +1272,7 @@ body{
 
 <div class="page-tarjetas">
 
+<!-- FONDO CON NUBES -->
 <div class="fondo-tarjetas">
     <div class="nube-tarjetas-arriba"></div>
     <div class="nube-tarjetas-abajo"></div>
@@ -1282,6 +1284,7 @@ body{
     <div class="titulo-tarjetas">Tarjetas</div>
 </div>
 
+<!-- SECCION AZUL CON NUBES -->
 <div class="seccion-azul">
     <div class="nube-azul-arriba"></div>
     <div class="nube-azul-abajo"></div>
@@ -1289,7 +1292,7 @@ body{
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
-            <!-- TARJETA VISA -->
+            <!-- TARJETA VISA - CRÉDITO (blanca, sin Virtual) -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
@@ -1298,7 +1301,6 @@ body{
                             <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                            <span class="virtual-badge">Virtual</span>
                             <span class="mostrar-datos">Mostrar datos</span>
                         </div>
                     </div>
@@ -1316,7 +1318,7 @@ body{
                 </div>
             </div>
 
-            <!-- TARJETA DÉBITO -->
+            <!-- TARJETA DÉBITO VIRTUAL (salmón, con Virtual) -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
