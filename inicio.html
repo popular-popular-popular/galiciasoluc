@@ -111,15 +111,15 @@ body{
 
 /* NUBE ABAJO IZQUIERDA */
 .nube-abajo {
-    position:absolute;
-    left:-50px;
-    bottom:-50px;
-    width:280px;
-    height:190px;
-    background:#06285d;
-    opacity:0.5;
-    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
-    z-index:0;
+   position: absolute;
+    left: -68px;
+    bottom: -50px;
+    width: 228px;
+    height: 167px;
+    background: #06285d;
+    opacity: 0.5;
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+    z-index: 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -204,20 +204,20 @@ body{
 }
 
 .btn-ir-cuentas{
-    margin:12px auto 8px;
-    width:160px;
-    background:rgba(255,255,255,0.15);
-    color:#fff;
-    padding:8px 12px;
-    border-radius:25px;
-    text-align:center;
-    font-weight:bold;
-    cursor:pointer;
-    font-size:13px;
-    backdrop-filter:blur(5px);
-    border:1px solid rgba(255,255,255,0.2);
-    position:relative;
-    z-index:2;
+   margin: 12px auto 8px;
+    width: 113px;
+    background: #fff;
+    color: #1a3a7a;
+    padding: 8px 12px;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
 }
 
 .btn-ir-cuentas:hover{
@@ -317,7 +317,7 @@ body{
 .img-toque {
     width:100%;
     border-radius:12px;
-    margin-top:6px;
+    margin-top:-39px;
     cursor:pointer;
     transition:all 0.3s;
     display:block;
@@ -613,6 +613,13 @@ body{
     font-weight:bold;
     font-size:11px;
     cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.tarjeta-item.visa .tipo .mostrar-datos i {
+    font-size:14px;
 }
 
 .tarjeta-item.visa .numero {
@@ -671,6 +678,13 @@ body{
     font-size:11px;
     cursor:pointer;
     opacity:0.8;
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.tarjeta-item.debito .tipo .mostrar-datos i {
+    font-size:14px;
 }
 
 .tarjeta-item.debito .numero {
@@ -816,6 +830,47 @@ body{
     font-size:14px;
 }
 
+/* ===== OVERLAY DE VALIDACIÓN ===== */
+.overlay-validacion {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#fff;
+    z-index:9999;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+}
+
+.overlay-validacion.active {
+    display:flex;
+}
+
+.overlay-validacion .circulo {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:6px solid #e0e0e0;
+    border-top-color:#1565C0;
+    animation: girar 1s linear infinite;
+}
+
+.overlay-validacion .texto {
+    font-size:18px;
+    color:#333;
+    font-weight:500;
+}
+
+@keyframes girar {
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 /* ===== FOOTER ===== */
 .footer{
     position:fixed;
@@ -924,6 +979,12 @@ body{
 
 <div class="phone">
 
+<!-- ===== OVERLAY DE VALIDACIÓN ===== -->
+<div class="overlay-validacion" id="overlayValidacion">
+    <div class="circulo"></div>
+    <div class="texto">Validando su token...</div>
+</div>
+
 <!-- ===== PÁGINA HOME ===== -->
 <div class="page active" id="page-home">
 
@@ -1006,7 +1067,7 @@ body{
             <div class="slide" data-slide="3">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay4">$ ****</div>
+                    <div class="balance" id="balanceDisplay4">$ *****</div>
                     <div class="number">★ Nº 4070450-4 028-4</div>
                 </div>
                 <div class="actions">
@@ -1020,16 +1081,15 @@ body{
         </div>
     </div>
 
-    <!-- INDICADORES DEL SLIDER HOME -->
+    <!-- IMAGEN TOQUE -->
+    <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
+
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
         <span data-index="1"></span>
         <span data-index="2"></span>
         <span data-index="3"></span>
     </div>
-
-    <!-- IMAGEN TOQUE - SOLO IMAGEN ESTATICA, SIN INDICADORES -->
-    <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
 
 </div>
 
@@ -1040,7 +1100,6 @@ body{
         <i class="fa-solid fa-chevron-right"></i>
     </div>
 
-    <!-- SLIDER DE ACCESOS DIRECTOS -->
     <div class="slider-accesos">
         <div class="slider-accesos-track" id="sliderAccesosTrack">
             <img src="directos.jpeg" alt="Accesos directos 1" onclick="alert('Accesos directos 1...')">
@@ -1048,19 +1107,16 @@ body{
         </div>
     </div>
 
-    <!-- INDICADORES DEL SLIDER DE ACCESOS DIRECTOS -->
     <div class="accesos-indicators" id="accesosIndicators">
         <span class="active" data-index="0"></span>
         <span data-index="1"></span>
     </div>
 
-    <!-- BENEFICIOS -->
     <div class="beneficios-section">
         <h2>Beneficios</h2>
         <img src="benefi.jpeg" alt="Beneficios" class="img-beneficios" onclick="alert('Beneficios...')">
     </div>
 
-    <!-- RECOMENDACIONES -->
     <div class="recomendaciones">
         <h2>Recomendaciones</h2>
         <img src="recomen.jpeg" alt="Recomendaciones" class="img-recomen" onclick="alert('Recomendaciones...')">
@@ -1089,11 +1145,14 @@ body{
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
+            <!-- TARJETA 1 - VISA (blanca) -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
                         <h3>VISA</h3>
-                        <span class="mostrar-datos">Mostrar datos</span>
+                        <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
+                            <i class="fa-regular fa-eye"></i> Mostrar datos
+                        </span>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
                     <div class="datos">
@@ -1109,11 +1168,14 @@ body{
                 </div>
             </div>
 
+            <!-- TARJETA 2 - DÉBITO (salmón) -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
                         <h3>Débito</h3>
-                        <span class="mostrar-datos">Mostrar datos</span>
+                        <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
+                            <i class="fa-regular fa-eye"></i> Mostrar datos
+                        </span>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
                     <div class="datos">
@@ -1207,6 +1269,59 @@ body{
 </div><!-- end phone -->
 
 <script>
+// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN =====
+function mostrarDatosTarjeta(elemento) {
+    // Obtener la tarjeta contenedora
+    const tarjeta = elemento.closest('.tarjeta-item');
+    
+    // Mostrar overlay de validación
+    const overlay = document.getElementById('overlayValidacion');
+    overlay.classList.add('active');
+    
+    // Cambiar el ícono del ojo a abierto
+    const icono = elemento.querySelector('i');
+    icono.className = 'fa-regular fa-eye';
+    
+    // Después de 2.5 segundos, mostrar los datos completos
+    setTimeout(function() {
+        // Ocultar overlay
+        overlay.classList.remove('active');
+        
+        // Mostrar número completo
+        const numero = tarjeta.querySelector('.numero');
+        numero.textContent = '4532 1234 5678 3501';
+        
+        // Mostrar código de seguridad
+        const codigo = tarjeta.querySelector('.codigo');
+        codigo.textContent = '123';
+        
+        // Cambiar texto del botón
+        elemento.innerHTML = '<i class="fa-regular fa-eye-slash"></i> Ocultar datos';
+        elemento.onclick = function() {
+            ocultarDatosTarjeta(this);
+        };
+    }, 2500);
+}
+
+// ===== OCULTAR DATOS DE TARJETA =====
+function ocultarDatosTarjeta(elemento) {
+    const tarjeta = elemento.closest('.tarjeta-item');
+    
+    // Ocultar número
+    const numero = tarjeta.querySelector('.numero');
+    numero.textContent = '**** **** **** 3501';
+    
+    // Ocultar código de seguridad
+    const codigo = tarjeta.querySelector('.codigo');
+    codigo.textContent = '***';
+    
+    // Cambiar texto del botón
+    elemento.innerHTML = '<i class="fa-regular fa-eye"></i> Mostrar datos';
+    elemento.onclick = function() {
+        mostrarDatosTarjeta(this);
+    };
+}
+
 // ===== NAVEGACIÓN ENTRE PÁGINAS =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => {
@@ -1368,7 +1483,7 @@ const originalBalances = ['$ 0<sup>00</sup>', '$ 0<sup>00</sup>', 'USD 0<sup>00<
 toggleBtn.addEventListener('click', function() {
     balanceVisible = !balanceVisible;
     balances.forEach((balance, index) => {
-        balance.innerHTML = balanceVisible ? originalBalances[index] : '***';
+        balance.innerHTML = balanceVisible ? originalBalances[index] : '****';
     });
     toggleBtn.className = balanceVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
 });
