@@ -1024,6 +1024,47 @@ body{
     font-size:14px;
 }
 
+/* ===== OVERLAY DE VALIDACIÓN ===== */
+.overlay-validacion {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#fff;
+    z-index:9999;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+}
+
+.overlay-validacion.active {
+    display:flex;
+}
+
+.overlay-validacion .circulo {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:6px solid #e0e0e0;
+    border-top-color:#1565C0;
+    animation: girar 1s linear infinite;
+}
+
+.overlay-validacion .texto {
+    font-size:18px;
+    color:#333;
+    font-weight:500;
+}
+
+@keyframes girar {
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 /* ===== FOOTER ===== */
 .footer{
     position:fixed;
@@ -1131,6 +1172,12 @@ body{
 <body>
 
 <div class="phone">
+
+<!-- ===== OVERLAY DE VALIDACIÓN ===== -->
+<div class="overlay-validacion" id="overlayValidacion">
+    <div class="circulo"></div>
+    <div class="texto">Validando su token...</div>
+</div>
 
 <!-- ===== PÁGINA HOME ===== -->
 <div class="page active" id="page-home">
@@ -1307,7 +1354,7 @@ body{
                             <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                            <span class="mostrar-datos">Mostrar datos</span>
+                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">Mostrar datos</span>
                         </div>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
@@ -1336,7 +1383,7 @@ body{
                             <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                            <span class="mostrar-datos">Mostrar datos</span>
+                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">Mostrar datos</span>
                         </div>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
@@ -1431,6 +1478,55 @@ body{
 </div><!-- end phone -->
 
 <script>
+// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN =====
+function mostrarDatosTarjeta(elemento) {
+    // Obtener la tarjeta contenedora
+    const tarjeta = elemento.closest('.tarjeta-item');
+    
+    // Mostrar overlay de validación
+    const overlay = document.getElementById('overlayValidacion');
+    overlay.classList.add('active');
+    
+    // Después de 2.5 segundos, mostrar los datos completos
+    setTimeout(function() {
+        // Ocultar overlay
+        overlay.classList.remove('active');
+        
+        // Mostrar número completo
+        const numero = tarjeta.querySelector('.numero');
+        numero.textContent = '4532 1234 5678 3501';
+        
+        // Mostrar código de seguridad
+        const codigo = tarjeta.querySelector('.codigo');
+        codigo.textContent = '123';
+        
+        // Cambiar texto del botón
+        elemento.textContent = 'Ocultar datos';
+        elemento.onclick = function() {
+            ocultarDatosTarjeta(this);
+        };
+    }, 2500);
+}
+
+// ===== OCULTAR DATOS DE TARJETA =====
+function ocultarDatosTarjeta(elemento) {
+    const tarjeta = elemento.closest('.tarjeta-item');
+    
+    // Ocultar número
+    const numero = tarjeta.querySelector('.numero');
+    numero.textContent = '**** **** **** 3501';
+    
+    // Ocultar código de seguridad
+    const codigo = tarjeta.querySelector('.codigo');
+    codigo.textContent = '***';
+    
+    // Cambiar texto del botón
+    elemento.textContent = 'Mostrar datos';
+    elemento.onclick = function() {
+        mostrarDatosTarjeta(this);
+    };
+}
+
 // ===== NAVEGACIÓN ENTRE PÁGINAS =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => {
