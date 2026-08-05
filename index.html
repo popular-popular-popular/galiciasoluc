@@ -313,7 +313,7 @@ body{
     color:#fff;
 }
 
-/* IMAGEN TOQUE - SOLO IMAGEN ESTATICA */
+/* IMAGEN TOQUE */
 .img-toque {
     width:100%;
     border-radius:12px;
@@ -397,7 +397,6 @@ body{
     cursor:pointer;
 }
 
-/* INDICADORES DEL SLIDER DE ACCESOS DIRECTOS */
 .accesos-indicators {
     display:flex;
     justify-content:center;
@@ -533,11 +532,11 @@ body{
     padding:0 0 80px;
 }
 
-/* FONDO AZUL CON NUBES - SIN HEADER */
+/* FONDO AZUL CON NUBES - SIN PADDING PARA EVITAR LINEA BLANCA */
 .fondo-tarjetas {
     background:#14367a;
     color:#fff;
-    padding:20px 18px 20px;
+    padding:16px 18px 16px 18px;
     position:relative;
     overflow:hidden;
 }
@@ -636,12 +635,13 @@ body{
     cursor:pointer;
 }
 
-/* SECCION AZUL DE TARJETAS */
+/* SECCION AZUL DE TARJETAS - SIN PADDING SUPERIOR PARA EVITAR LINEA */
 .seccion-azul {
     background:#14367a;
     padding:0 18px 20px;
     position:relative;
     overflow:hidden;
+    margin-top:0;
 }
 
 /* NUBES DENTRO DE LA SECCION AZUL */
@@ -1167,7 +1167,6 @@ body{
         </div>
     </div>
 
-    <!-- IMAGEN TOQUE -->
     <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
 
     <div class="slider-indicators" id="indicators">
@@ -1186,7 +1185,6 @@ body{
         <i class="fa-solid fa-chevron-right"></i>
     </div>
 
-    <!-- SLIDER DE ACCESOS DIRECTOS -->
     <div class="slider-accesos">
         <div class="slider-accesos-track" id="sliderAccesosTrack">
             <img src="directos.jpeg" alt="Accesos directos 1" onclick="alert('Accesos directos 1...')">
@@ -1194,19 +1192,16 @@ body{
         </div>
     </div>
 
-    <!-- INDICADORES DEL SLIDER DE ACCESOS DIRECTOS -->
     <div class="accesos-indicators" id="accesosIndicators">
         <span class="active" data-index="0"></span>
         <span data-index="1"></span>
     </div>
 
-    <!-- BENEFICIOS -->
     <div class="beneficios-section">
         <h2>Beneficios</h2>
         <img src="benefi.jpeg" alt="Beneficios" class="img-beneficios" onclick="alert('Beneficios...')">
     </div>
 
-    <!-- RECOMENDACIONES -->
     <div class="recomendaciones">
         <h2>Recomendaciones</h2>
         <img src="recomen.jpeg" alt="Recomendaciones" class="img-recomen" onclick="alert('Recomendaciones...')">
@@ -1221,7 +1216,7 @@ body{
 
 <div class="page-tarjetas">
 
-<!-- FONDO CON NUBES Y TITULO CENTRADO -->
+<!-- FONDO CON NUBES -->
 <div class="fondo-tarjetas">
     <div class="nube-tarjetas-arriba"></div>
     <div class="nube-tarjetas-abajo"></div>
