@@ -732,24 +732,25 @@ body{
     padding:0 2px;
 }
 
-/* TARJETA VISA - CRÉDITO (blanca) */
+/* TARJETA VISA - CRÉDITO (blanca) - MÁS ANGOSTA */
 .tarjeta-item.visa {
     background:#fff;
     border-radius:16px;
-    padding:30px 24px;
+    padding:25px 18px;
     box-shadow:0 4px 15px rgba(0,0,0,.25);
-    min-height:200px;
+    min-height:180px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    width:100%;
+    width:92%;
+    margin:0 auto;
 }
 
 .tarjeta-item.visa .tipo {
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .tarjeta-item.visa .tipo-left {
@@ -759,14 +760,14 @@ body{
 }
 
 .tarjeta-item.visa .tipo-left .visa-title {
-    font-size:24px;
+    font-size:22px;
     font-weight:bold;
     color:#333;
     letter-spacing:1px;
 }
 
 .tarjeta-item.visa .tipo-left .debito-text {
-    font-size:13px;
+    font-size:12px;
     color:#666;
     font-weight:normal;
 }
@@ -774,28 +775,35 @@ body{
 .tarjeta-item.visa .tipo .mostrar-datos {
     color:#1565C0;
     font-weight:bold;
-    font-size:12px;
+    font-size:11px;
     cursor:pointer;
     margin-top:4px;
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
 
 .tarjeta-item.visa .tipo .mostrar-datos:hover {
     text-decoration:underline;
 }
 
+.tarjeta-item.visa .tipo .mostrar-datos i {
+    font-size:13px;
+}
+
 .tarjeta-item.visa .numero {
-    font-size:22px;
+    font-size:20px;
     color:#333;
     letter-spacing:3px;
-    margin:12px 0 8px;
+    margin:10px 0 6px;
 }
 
 .tarjeta-item.visa .datos {
     display:flex;
-    gap:20px;
-    font-size:13px;
+    gap:15px;
+    font-size:12px;
     color:#333;
-    margin-top:5px;
+    margin-top:3px;
 }
 
 .tarjeta-item.visa .datos div {
@@ -804,29 +812,30 @@ body{
 
 .tarjeta-item.visa .datos div span {
     display:block;
-    font-size:10px;
+    font-size:9px;
     color:#999;
-    margin-bottom:3px;
+    margin-bottom:2px;
 }
 
-/* TARJETA DÉBITO VIRTUAL (salmón) */
+/* TARJETA DÉBITO VIRTUAL (salmón) - MÁS ANGOSTA */
 .tarjeta-item.debito {
     background:linear-gradient(83deg, #514492, #fc2702);
     border-radius:16px;
-    padding:30px 24px;
+    padding:25px 18px;
     box-shadow:0 4px 15px rgba(0,0,0,.25);
-    min-height:200px;
+    min-height:180px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    width:100%;
+    width:92%;
+    margin:0 auto;
 }
 
 .tarjeta-item.debito .tipo {
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .tarjeta-item.debito .tipo-left {
@@ -838,11 +847,11 @@ body{
 .tarjeta-item.debito .tipo-left .visa-row {
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
 }
 
 .tarjeta-item.debito .tipo-left .visa-title {
-    font-size:24px;
+    font-size:22px;
     font-weight:bold;
     color:#fff;
     letter-spacing:1px;
@@ -852,9 +861,9 @@ body{
     background:#fff;
     border:1.5px solid rgba(255,255,255,0.3);
     color:#1565C0;
-    padding:4px 12px;
+    padding:3px 10px;
     border-radius:20px;
-    font-size:11px;
+    font-size:10px;
     font-weight:bold;
     text-transform:uppercase;
     letter-spacing:0.5px;
@@ -862,7 +871,7 @@ body{
 }
 
 .tarjeta-item.debito .tipo-left .debito-text {
-    font-size:13px;
+    font-size:12px;
     color:rgba(255,255,255,0.8);
     font-weight:normal;
 }
@@ -870,10 +879,13 @@ body{
 .tarjeta-item.debito .tipo .mostrar-datos {
     color:#fff;
     font-weight:bold;
-    font-size:12px;
+    font-size:11px;
     cursor:pointer;
     margin-top:4px;
     opacity:0.8;
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
 
 .tarjeta-item.debito .tipo .mostrar-datos:hover {
@@ -881,19 +893,23 @@ body{
     text-decoration:underline;
 }
 
+.tarjeta-item.debito .tipo .mostrar-datos i {
+    font-size:13px;
+}
+
 .tarjeta-item.debito .numero {
-    font-size:22px;
+    font-size:20px;
     color:#fff;
     letter-spacing:3px;
-    margin:12px 0 8px;
+    margin:10px 0 6px;
 }
 
 .tarjeta-item.debito .datos {
     display:flex;
-    gap:20px;
-    font-size:13px;
+    gap:15px;
+    font-size:12px;
     color:#fff;
-    margin-top:5px;
+    margin-top:3px;
 }
 
 .tarjeta-item.debito .datos div {
@@ -902,9 +918,9 @@ body{
 
 .tarjeta-item.debito .datos div span {
     display:block;
-    font-size:10px;
+    font-size:9px;
     color:rgba(255,255,255,0.6);
-    margin-bottom:3px;
+    margin-bottom:2px;
 }
 
 .tarjetas-indicators {
@@ -1354,7 +1370,9 @@ body{
                             <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">Mostrar datos</span>
+                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
+                                Mostrar datos <i class="fa-regular fa-eye"></i>
+                            </span>
                         </div>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
@@ -1383,7 +1401,9 @@ body{
                             <span class="debito-text">Débito</span>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
-                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">Mostrar datos</span>
+                            <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
+                                Mostrar datos <i class="fa-regular fa-eye"></i>
+                            </span>
                         </div>
                     </div>
                     <div class="numero">**** **** **** 3501</div>
@@ -1500,8 +1520,8 @@ function mostrarDatosTarjeta(elemento) {
         const codigo = tarjeta.querySelector('.codigo');
         codigo.textContent = '123';
         
-        // Cambiar texto del botón
-        elemento.textContent = 'Ocultar datos';
+        // Cambiar texto del botón con el ojo tachado a la derecha
+        elemento.innerHTML = 'Ocultar datos <i class="fa-regular fa-eye-slash"></i>';
         elemento.onclick = function() {
             ocultarDatosTarjeta(this);
         };
@@ -1520,8 +1540,8 @@ function ocultarDatosTarjeta(elemento) {
     const codigo = tarjeta.querySelector('.codigo');
     codigo.textContent = '***';
     
-    // Cambiar texto del botón
-    elemento.textContent = 'Mostrar datos';
+    // Cambiar texto del botón con el ojo a la derecha
+    elemento.innerHTML = 'Mostrar datos <i class="fa-regular fa-eye"></i>';
     elemento.onclick = function() {
         mostrarDatosTarjeta(this);
     };
