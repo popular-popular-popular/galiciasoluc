@@ -780,27 +780,9 @@ body{
     margin-bottom:2px;
 }
 
+/* ELIMINADOS LOS PUNTITOS DEL SLIDER DE TARJETAS */
 .tarjetas-indicators {
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin:6px 0 0;
-    z-index:2;
-    position:relative;
-}
-
-.tarjetas-indicators span {
-    width:10px;
-    height:10px;
-    background:rgba(255,255,255,0.3);
-    border-radius:20px;
-    transition:all 0.3s;
-    cursor:pointer;
-}
-
-.tarjetas-indicators span.active {
-    width:35px;
-    background:#fff;
+    display:none;
 }
 
 /* ACCIONES TARJETA - UNA SOLA IMAGEN */
@@ -1263,10 +1245,11 @@ body{
         </div>
     </div>
 
-    <div class="tarjetas-indicators" id="tarjetasIndicators">
+    <!-- PUNTITOS ELIMINADOS -->
+    <!-- <div class="tarjetas-indicators" id="tarjetasIndicators">
         <span class="active" data-index="0"></span>
         <span data-index="1"></span>
-    </div>
+    </div> -->
 
     <!-- ACCIONES TARJETA - UNA SOLA IMAGEN to.jpeg -->
     <div class="acciones-tarjeta">
