@@ -946,23 +946,30 @@ body{
     background:#fff;
 }
 
+/* ACCIONES TARJETA - IMÁGENES */
 .acciones-tarjeta {
-    display:flex;
-    justify-content:center;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
     margin-top:14px;
     z-index:2;
     position:relative;
 }
 
-.acciones-tarjeta img {
+.acciones-tarjeta .btn-accion-img {
     width:100%;
-    border-radius:12px;
+    max-width:60px;
+    height:auto;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
     cursor:pointer;
     transition:all 0.3s;
+    border-radius:8px;
 }
 
-.acciones-tarjeta img:hover {
-    transform:scale(1.02);
+.acciones-tarjeta .btn-accion-img:hover {
+    transform:scale(1.1);
 }
 
 .seccion-blanca {
@@ -1277,8 +1284,8 @@ body{
         </div>
     </div>
 
-    <!-- IMAGEN TOQUE - CAMBIADA A pin.jpeg -->
-    <img src="pin.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
+    <!-- IMAGEN TOQUE -->
+    <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
@@ -1414,9 +1421,12 @@ body{
         <span data-index="1"></span>
     </div>
 
-    <!-- ACCIONES TARJETA - CAMBIADA A pin.jpeg (porque es la primera) -->
+    <!-- ACCIONES TARJETA CON IMÁGENES -->
     <div class="acciones-tarjeta">
-        <img src="pin.jpeg" alt="Acciones" onclick="alert('Acciones de tarjeta...')">
+        <img src="pin.jpeg" alt="Blanquear PIN" class="btn-accion-img" onclick="alert('Blanqueando PIN...')">
+        <img src="pausa.jpeg" alt="Pausar tarjeta" class="btn-accion-img" onclick="alert('Pausando tarjeta...')">
+        <img src="denun.jpeg" alt="Denunciar tarjeta" class="btn-accion-img" onclick="alert('Denunciando tarjeta...')">
+        <img src="ges.jpeg" alt="Más gestiones" class="btn-accion-img" onclick="alert('Más gestiones...')">
     </div>
 
 </div>
