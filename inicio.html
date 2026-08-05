@@ -947,48 +947,22 @@ body{
 }
 
 .acciones-tarjeta {
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
+    display:flex;
+    justify-content:center;
     margin-top:14px;
     z-index:2;
     position:relative;
 }
 
-.acciones-tarjeta .btn-accion {
-    background:rgba(255,255,255,0.12);
-    color:#fff;
-    padding:10px 6px;
-    border-radius:12px;
-    text-align:center;
-    font-size:11px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:all 0.3s;
-    border:1px solid rgba(255,255,255,0.08);
-}
-
-.acciones-tarjeta .btn-accion:hover {
-    background:rgba(255,255,255,0.2);
-    transform:scale(1.02);
-}
-
-.acciones-tarjeta .btn-accion i {
-    display:block;
-    font-size:18px;
-    margin-bottom:4px;
-}
-
-.acciones-tarjeta .btn-accion-img {
+.acciones-tarjeta img {
     width:100%;
-    height:auto;
     border-radius:12px;
     cursor:pointer;
     transition:all 0.3s;
 }
 
-.acciones-tarjeta .btn-accion-img:hover {
-    transform:scale(1.05);
+.acciones-tarjeta img:hover {
+    transform:scale(1.02);
 }
 
 .seccion-blanca {
@@ -1308,9 +1282,9 @@ body{
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span class="active" data-index="1"></span>
-        <span class="active" data-index="2"></span>
-        <span class="active" data-index="3"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
     </div>
 
 </div>
@@ -1440,22 +1414,9 @@ body{
         <span data-index="1"></span>
     </div>
 
+    <!-- ACCIONES TARJETA - SOLO IMAGEN TO.JPEG -->
     <div class="acciones-tarjeta">
-        <!-- IMAGEN PIN -->
-        <img src="pin.jpeg" alt="Blanquear PIN" class="btn-accion-img" onclick="alert('Blanqueando PIN...')">
-        
-        <div class="btn-accion" onclick="alert('Pausando tarjeta...')">
-            <i class="fa-solid fa-pause"></i>
-            Pausar tarjeta
-        </div>
-        <div class="btn-accion" onclick="alert('Denunciando tarjeta...')">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            Denunciar tarjeta
-        </div>
-        <div class="btn-accion" onclick="alert('Más gestiones...')">
-            <i class="fa-solid fa-ellipsis"></i>
-            Más gestiones
-        </div>
+        <img src="to.jpeg" alt="Acciones" onclick="alert('Acciones de tarjeta...')">
     </div>
 
 </div>
