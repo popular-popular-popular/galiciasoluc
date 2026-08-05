@@ -1368,7 +1368,7 @@ const originalBalances = ['$ 0<sup>00</sup>', '$ 0<sup>00</sup>', 'USD 0<sup>00<
 toggleBtn.addEventListener('click', function() {
     balanceVisible = !balanceVisible;
     balances.forEach((balance, index) => {
-        balance.innerHTML = balanceVisible ? originalBalances[index] : '***';
+        balance.innerHTML = balanceVisible ? originalBalances[index] : '****';
     });
     toggleBtn.className = balanceVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
 });
