@@ -76,11 +76,24 @@ body{
     align-items:center;
     margin-bottom:30px;
     border:2px solid rgba(255,255,255,0.2);
+    transition:all 0.5s;
+}
+
+.overlay-huella .logo-huella.activo {
+    background:rgba(255,255,255,0.3);
+    border-color:#4CAF50;
+    transform:scale(1.1);
+    box-shadow:0 0 40px rgba(76,175,80,0.3);
 }
 
 .overlay-huella .logo-huella i {
     font-size:60px;
     color:#fff;
+    transition:all 0.5s;
+}
+
+.overlay-huella .logo-huella.activo i {
+    color:#4CAF50;
 }
 
 .overlay-huella .titulo-huella {
@@ -119,6 +132,12 @@ body{
     box-shadow:0 6px 30px rgba(0,0,0,0.4);
 }
 
+.overlay-huella .btn-huella:disabled {
+    opacity:0.5;
+    cursor:not-allowed;
+    transform:none;
+}
+
 .overlay-huella .btn-huella i {
     font-size:22px;
 }
@@ -130,11 +149,21 @@ body{
     text-align:center;
 }
 
-.overlay-huella .intentos-huella {
+.overlay-huella .estado-huella {
+    color:#fff;
+    font-size:18px;
+    margin-top:20px;
+    min-height:30px;
+    font-weight:500;
+    transition:all 0.3s;
+}
+
+.overlay-huella .estado-huella.error {
     color:#ff6b6b;
-    font-size:14px;
-    margin-top:10px;
-    min-height:25px;
+}
+
+.overlay-huella .estado-huella.exito {
+    color:#4CAF50;
 }
 
 /* ===== HOME ===== */
@@ -1289,7 +1318,7 @@ body{
 
 <!-- ===== OVERLAY DE HUELLA DIGITAL ===== -->
 <div class="overlay-huella" id="overlayHuella">
-    <div class="logo-huella">
+    <div class="logo-huella" id="iconoHuella">
         <i class="fa-solid fa-fingerprint"></i>
     </div>
     <div class="titulo-huella">Banco Digital</div>
@@ -1297,12 +1326,12 @@ body{
         Verifica tu identidad<br>
         con tu huella digital
     </div>
-    <button class="btn-huella" onclick="autenticarConHuella()">
+    <button class="btn-huella" id="btnHuella" onclick="autenticarConHuella()">
         <i class="fa-solid fa-fingerprint"></i>
         Usar huella digital
     </button>
+    <div class="estado-huella" id="estadoHuella">Pon tu dedo en el sensor</div>
     <div class="mensaje-huella">Tu información está protegida con<br>autenticación biométrica</div>
-    <div class="intentos-huella" id="mensajeErrorHuella"></div>
 </div>
 
 <!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
@@ -1627,85 +1656,60 @@ body{
 </div><!-- end phone -->
 
 <script>
-// ===== AUTENTICACIÓN POR HUELLA DIGITAL =====
-let intentosHuella = 3;
+// ===== AUTENTICACIÓN POR HUELLA DIGITAL (SIMULADA) =====
 let autenticado = false;
 
 function autenticarConHuella() {
-    const mensajeError = document.getElementById('mensajeErrorHuella');
-    mensajeError.textContent = '';
+    const btnHuella = document.getElementById('btnHuella');
+    const estadoHuella = document.getElementById('estadoHuella');
+    const iconoHuella = document.getElementById('iconoHuella');
     
-    // Verificar si el navegador soporta WebAuthn
-    if (!window.PublicKeyCredential) {
-        mensajeError.textContent = '❌ Tu dispositivo no soporta autenticación biométrica.';
-        mensajeError.style.color = '#ff6b6b';
-        return;
-    }
-
-    // Simular autenticación biométrica (en un entorno real, se usaría WebAuthn)
-    // Para dispositivos móviles reales, esto activaría el sensor de huella
+    // Deshabilitar el botón durante la animación
+    btnHuella.disabled = true;
     
-    // Verificar si es un dispositivo móvil con soporte para huella
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // Cambiar estado a "Leyendo..."
+    estadoHuella.textContent = '🔍 Leyendo huella...';
+    estadoHuella.className = 'estado-huella';
     
-    if (isMobile) {
-        // En móviles, intentar usar la API de huella digital
-        if (navigator.credentials && navigator.credentials.get) {
-            // Simulación de autenticación biométrica
-            mensajeError.textContent = '🔄 Coloca tu dedo en el sensor...';
-            mensajeError.style.color = '#fff';
-            
-            // Simular el proceso de autenticación
-            setTimeout(() => {
-                // Simular éxito (90% de probabilidad de éxito)
-                const exito = Math.random() < 0.9;
-                
-                if (exito) {
-                    autenticado = true;
-                    document.getElementById('overlayHuella').style.display = 'none';
-                    mensajeError.textContent = '';
-                } else {
-                    intentosHuella--;
-                    if (intentosHuella > 0) {
-                        mensajeError.textContent = '❌ Huella no reconocida. Intentos restantes: ' + intentosHuella;
-                        mensajeError.style.color = '#ff6b6b';
-                    } else {
-                        mensajeError.textContent = '❌ Demasiados intentos fallidos. Reinicia la app.';
-                        mensajeError.style.color = '#ff6b6b';
-                        // Bloquear el botón
-                        document.querySelector('.btn-huella').disabled = true;
-                        document.querySelector('.btn-huella').style.opacity = '0.5';
-                    }
-                }
-            }, 2000);
-        } else {
-            mensajeError.textContent = '❌ No se pudo acceder al sensor de huella.';
-            mensajeError.style.color = '#ff6b6b';
-        }
-    } else {
-        // En desktop, simular autenticación o usar alternativa
-        mensajeError.textContent = '🔄 Simulando autenticación biométrica...';
-        mensajeError.style.color = '#fff';
+    // Activar animación del icono
+    iconoHuella.classList.add('activo');
+    
+    // Simular el tiempo de lectura de huella (2 segundos)
+    setTimeout(() => {
+        // Simular éxito (95% de probabilidad)
+        const exito = Math.random() < 0.95;
         
-        setTimeout(() => {
-            autenticado = true;
-            document.getElementById('overlayHuella').style.display = 'none';
-            mensajeError.textContent = '';
-        }, 2000);
-    }
+        if (exito) {
+            // Autenticación exitosa
+            estadoHuella.textContent = '✅ ¡Huella verificada!';
+            estadoHuella.className = 'estado-huella exito';
+            
+            // Esperar un momento y ocultar el overlay
+            setTimeout(() => {
+                autenticado = true;
+                document.getElementById('overlayHuella').style.display = 'none';
+                estadoHuella.textContent = '';
+                btnHuella.disabled = false;
+                iconoHuella.classList.remove('activo');
+            }, 800);
+            
+        } else {
+            // Autenticación fallida
+            estadoHuella.textContent = '❌ Huella no reconocida. Intenta de nuevo.';
+            estadoHuella.className = 'estado-huella error';
+            
+            // Reactivar el botón
+            btnHuella.disabled = false;
+            iconoHuella.classList.remove('activo');
+            
+            // Después de 2 segundos, restaurar el mensaje inicial
+            setTimeout(() => {
+                estadoHuella.textContent = 'Pon tu dedo en el sensor';
+                estadoHuella.className = 'estado-huella';
+            }, 2000);
+        }
+    }, 2000);
 }
-
-// Verificar soporte de autenticación biométrica al cargar
-document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar el overlay de huella siempre al inicio
-    document.getElementById('overlayHuella').style.display = 'flex';
-    
-    // Si el dispositivo no soporta WebAuthn, mostrar mensaje
-    if (!window.PublicKeyCredential) {
-        document.getElementById('mensajeErrorHuella').textContent = '⚠️ Usa tu PIN o patrón para desbloquear';
-        document.getElementById('mensajeErrorHuella').style.color = 'rgba(255,255,255,0.6)';
-    }
-});
 
 // ===== VARIABLES PARA EL LECTOR QR =====
 let html5QrCode = null;
