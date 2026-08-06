@@ -862,7 +862,7 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR ===== */
+/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR EN TEXTO ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
@@ -943,13 +943,11 @@ body{
     font-weight:500;
 }
 
-.overlay-validacion .contador {
-    font-size:52px;
+.overlay-validacion .texto .contador-numero {
     font-weight:bold;
     color:#444;
-    margin-top:10px;
-    transition:all 0.3s;
-    min-height:65px;
+    min-width:30px;
+    display:inline-block;
 }
 
 @keyframes rotate {
@@ -1066,10 +1064,6 @@ body{
     .overlay-validacion .texto {
         font-size:17px;
     }
-    .overlay-validacion .contador {
-        font-size:42px;
-        min-height:52px;
-    }
 }
 
 @media(min-width:421px){
@@ -1096,7 +1090,7 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
@@ -1120,9 +1114,8 @@ body{
         <div class="texto">
             Estamos verificando la<br>
             seguridad de este dispositivo.<br>
-            Esto va a tardar 5 segundos
+            Esto va a tardar <span class="contador-numero" id="contadorDisplay">5</span> segundos
         </div>
-        <div class="contador" id="contadorDisplay">5</div>
     </div>
 </div>
 
@@ -1409,7 +1402,7 @@ body{
 </div><!-- end phone -->
 
 <script>
-// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN Y CONTADOR =====
+// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN Y CONTADOR EN TEXTO =====
 function mostrarDatosTarjeta(elemento) {
     // Obtener la tarjeta contenedora
     const tarjeta = elemento.closest('.tarjeta-item');
