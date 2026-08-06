@@ -432,16 +432,17 @@ body{
     color:#fff;
 }
 
-/* IMAGEN TOQUE - SOLO IMAGEN ESTATICA */
+/* IMAGEN TOQUE - PEDIR PLATA AL TOQUE */
 .img-toque {
     width:100%;
     border-radius:12px;
-    margin-top:-39px;
+    margin-top:21px;
     cursor:pointer;
     transition:all 0.3s;
     display:block;
     position:relative;
     z-index:2;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
 }
 
 .img-toque:hover {
@@ -452,7 +453,7 @@ body{
     display:flex;
     justify-content:center;
     gap:8px;
-    margin-top:8px;
+    margin-top:10px;
     position:relative;
     z-index:2;
 }
@@ -604,46 +605,160 @@ body{
     padding:0 3px;
 }
 
-.fima-box, .dolar-box {
-    background:rgba(255,255,255,0.12);
-    border-radius:10px;
-    padding:10px 14px;
-    margin:12px 0 5px;
-    backdrop-filter:blur(5px);
+/* ===== CUENTA FIMA ===== */
+.cuenta-fima {
     text-align:center;
-    border:1px solid rgba(255,255,255,0.1);
+    margin-top:5px;
     position:relative;
     z-index:2;
 }
 
-.fima-box h4, .dolar-box h4 {
-    font-size:13px;
+.cuenta-fima .fima-header {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+}
+
+.cuenta-fima .fima-header h3 {
+    font-size:16px;
+    font-weight:bold;
     color:#fff;
 }
 
-.fima-box p, .dolar-box p {
-    font-size:11px;
-    opacity:0.9;
+.cuenta-fima .fima-header .porcentaje {
+    font-size:13px;
+    font-weight:bold;
+    color:#14367a;
+    background:#fff;
+    padding:2px 12px;
+    border-radius:20px;
+    display:inline-block;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+.cuenta-fima .balance-fima {
+    font-size:38px;
+    font-weight:bold;
     color:#fff;
     margin-top:2px;
 }
 
-.btn-fima, .btn-dolar {
-    background:#fff;
-    color:#0D47A1;
-    padding:5px 22px;
-    border-radius:18px;
-    font-weight:bold;
-    font-size:12px;
-    cursor:pointer;
-    border:none;
-    margin-top:6px;
-    transition:all 0.3s;
+.cuenta-fima .balance-fima sup {
+    font-size:16px;
 }
 
-.btn-fima:hover, .btn-dolar:hover {
-    transform:scale(1.05);
-    box-shadow:0 3px 12px rgba(0,0,0,0.2);
+.cuenta-fima .rendimiento-fima {
+    font-size:13px;
+    color:rgba(255,255,255,0.8);
+    margin-top:2px;
+}
+
+.cuenta-fima .rendimiento-fima .monto {
+    color:#eee
+    font-weight:bold;
+}
+
+.actions-fima {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:16px;
+    position:relative;
+    z-index:2;
+    align-items:start;
+}
+
+.actions-fima .btn-accion-img {
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+    cursor:pointer;
+    transition:all 0.3s;
+    border-radius:8px;
+}
+
+.actions-fima .btn-accion-img:hover {
+    transform:scale(1.1);
+}
+
+/* ===== CUENTA DÓLARES ===== */
+.cuenta-dolares {
+    text-align:center;
+    margin-top:5px;
+    position:relative;
+    z-index:2;
+}
+
+.cuenta-dolares .dolares-header {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+}
+
+.cuenta-dolares .dolares-header h3 {
+    font-size:16px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.cuenta-dolares .dolares-header .porcentaje {
+    font-size:13px;
+    font-weight:bold;
+    color:#14367a;
+    background:#fff;
+    padding:2px 12px;
+    border-radius:20px;
+    display:inline-block;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+.cuenta-dolares .balance-dolares {
+    font-size:38px;
+    font-weight:bold;
+    color:#fff;
+    margin-top:2px;
+}
+
+.cuenta-dolares .balance-dolares sup {
+    font-size:16px;
+}
+
+.cuenta-dolares .number-dolares {
+    margin-top:6px;
+    font-size:14px;
+    opacity:0.8;
+    color:#fff;
+}
+
+.actions-dolares {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:16px;
+    position:relative;
+    z-index:2;
+    align-items:start;
+}
+
+.actions-dolares .btn-accion-img {
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+    cursor:pointer;
+    transition:all 0.3s;
+    border-radius:8px;
+}
+
+.actions-dolares .btn-accion-img:hover {
+    transform:scale(1.1);
 }
 
 /* ===== TARJETAS ===== */
@@ -1336,6 +1451,22 @@ body{
         padding:2px 6px;
         left: -16px;
     }
+    .cuenta-fima .balance-fima,
+    .cuenta-dolares .balance-dolares {
+        font-size:32px;
+    }
+    .cuenta-fima .fima-header h3,
+    .cuenta-dolares .dolares-header h3 {
+        font-size:14px;
+    }
+    .cuenta-fima .fima-header .porcentaje,
+    .cuenta-dolares .dolares-header .porcentaje {
+        font-size:11px;
+        padding:2px 10px;
+    }
+    .img-toque {
+        margin-top:-18px;
+    }
 }
 
 @media(min-width:421px){
@@ -1445,12 +1576,12 @@ body{
     <div class="slide-container">
         <div class="slide-track" id="slideTrack">
 
-            <!-- SLIDE 1 -->
+            <!-- SLIDE 0 - Caja de ahorro en pesos -->
             <div class="slide active" data-slide="0">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay">$ 0<sup>00</sup></div>
-                    <div class="number">★ Nº 4070450-4 028-4</div>
+                    <div class="balance" id="balanceDisplay">$ 882.102<sup>59</sup></div>
+                    <div class="number">★ Nº 4141543-3 104-3</div>
                 </div>
                 <div class="actions">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
@@ -1460,38 +1591,37 @@ body{
                 </div>
             </div>
 
-            <!-- SLIDE 2 -->
+            <!-- SLIDE 1 - Cuenta FIMA -->
             <div class="slide" data-slide="1">
-                <div class="account">
-                    <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay2">$ 0<sup>00</sup></div>
-                    <div class="number">★ Nº 4070450-4 028-4</div>
+                <div class="cuenta-fima">
+                    <div class="fima-header">
+                        <h3>Cuenta Fima</h3>
+                        <span class="porcentaje">16,6%</span>
+                    </div>
+                    <div class="balance-fima" id="balanceFima">$ 1.026.196<sup>94</sup></div>
+                    <div class="rendimiento-fima">
+                        + <span class="monto">$ 466,91</span> Último rendimiento diario
+                    </div>
                 </div>
-                <div class="fima-box">
-                    <h4>💰 Activa Cuenta FIMA y hace rendir tus pesos un 16,6% anual</h4>
-                    <button class="btn-fima" onclick="alert('Activando cuenta FIMA...')">Activar Cuenta FIMA</button>
-                </div>
-                <div class="actions">
+                <div class="actions-fima">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
-                    <img src="ingresar.jpeg" alt="Ingresar" class="btn-accion-img" onclick="alert('Ingresar...')">
-                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
-                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                    <img src="ingresar.jpeg" alt="Agregar" class="btn-accion-img" onclick="alert('Agregar...')">
+                    <img src="alias.jpeg" alt="Retirar" class="btn-accion-img" onclick="alert('Retirar...')">
+                    <img src="comprar.jpeg" alt="Rendimiento" class="btn-accion-img" onclick="alert('Rendimiento...')">
                 </div>
             </div>
 
-            <!-- SLIDE 3 -->
+            <!-- SLIDE 2 - Caja de ahorro en dólares -->
             <div class="slide" data-slide="2">
-                <div class="account">
-                    <h3>Caja de ahorro en dólares</h3>
-                    <div class="balance" id="balanceDisplay3">USD 0<sup>00</sup></div>
-                    <div class="number">★ Nº 4057434-1 028-6</div>
+                <div class="cuenta-dolares">
+                    <div class="dolares-header">
+                        <h3>Caja de ahorro en dólares</h3>
+                        <span class="porcentaje">1,50%</span>
+                    </div>
+                    <div class="balance-dolares" id="balanceDolares">USD 30.670<sup>48</sup></div>
+                    <div class="number-dolares">★ Nº 4004073-8 104-1</div>
                 </div>
-                <div class="dolar-box">
-                    <h4>💵 MEP USD</h4>
-                    <p>Operá Dólar MEP desde tu cuenta</p>
-                    <button class="btn-dolar" onclick="alert('Activando cuenta remunerada...')">ACTIVAR CUENTA REMUNERADA</button>
-                </div>
-                <div class="actions">
+                <div class="actions-dolares">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
                     <img src="comprar.jpeg" alt="Operar Dólar MEP" class="btn-accion-img" onclick="alert('Operar Dólar MEP...')">
                     <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
@@ -1499,12 +1629,12 @@ body{
                 </div>
             </div>
 
-            <!-- SLIDE 4 -->
+            <!-- SLIDE 3 - Caja de ahorro en pesos (oculto) -->
             <div class="slide" data-slide="3">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
                     <div class="balance" id="balanceDisplay4">$ *****</div>
-                    <div class="number">★ Nº 4070450-4 028-4</div>
+                    <div class="number">★ Nº 4141543-3 104-3</div>
                 </div>
                 <div class="actions">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
@@ -1517,14 +1647,14 @@ body{
         </div>
     </div>
 
-    <!-- IMAGEN TOQUE -->
+    <!-- IMAGEN TOQUE - PEDIR PLATA AL TOQUE -->
     <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span class="active" data-index="1"></span>
-        <span class="active" data-index="2"></span>
-        <span class="active" data-index="3"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
     </div>
 
 </div>
@@ -1570,7 +1700,7 @@ body{
 <!-- FONDO AZUL SIN NUBES -->
 <div class="fondo-tarjetas">
     <span class="btn-back" onclick="showPage('home')">
-        <i></i>
+        <i class="fa-solid fa-arrow-left"></i>
     </span>
     <div class="titulo-tarjetas">Tarjetas</div>
     <div class="derecha-acciones">
@@ -1598,7 +1728,7 @@ body{
                             </span>
                         </div>
                     </div>
-                    <div class="numero">**** **** **** 3501</div>
+                    <div class="numero">**** **** **** 5058</div>
                     <div class="datos">
                         <div>
                             <span>Fecha de vencimiento</span>
@@ -1627,7 +1757,7 @@ body{
                             </span>
                         </div>
                     </div>
-                    <div class="numero">**** **** **** 3501</div>
+                    <div class="numero">**** **** **** 5058</div>
                     <div class="datos">
                         <div>
                             <span>Fecha de vencimiento</span>
@@ -1856,7 +1986,7 @@ function mostrarDatosTarjeta(elemento) {
         elemento.style.opacity = '1';
         
         const numero = tarjeta.querySelector('.numero');
-        numero.textContent = '4532 1234 5678 3501';
+        numero.textContent = '4517 6990 2854 5058';
         
         const fecha = tarjeta.querySelector('.fecha-oculta');
         fecha.textContent = '12/28';
@@ -1876,7 +2006,7 @@ function ocultarDatosTarjeta(elemento) {
     const tarjeta = elemento.closest('.tarjeta-item');
     
     const numero = tarjeta.querySelector('.numero');
-    numero.textContent = '**** **** **** 3501';
+    numero.textContent = '**** **** **** 5058';
     
     const fecha = tarjeta.querySelector('.fecha-oculta');
     fecha.textContent = '**/**';
@@ -1927,6 +2057,11 @@ function goToSlide(index) {
     slideTrack.style.transform = `translateX(-${index * 100}%)`;
     currentSlide = index;
 }
+
+// Inicializar solo el primer indicador como activo
+indicators.forEach((ind, i) => {
+    ind.classList.toggle('active', i === 0);
+});
 
 indicators.forEach(ind => {
     ind.addEventListener('click', function() {
@@ -2042,16 +2177,23 @@ let balanceVisible = true;
 const toggleBtn = document.getElementById('toggleBalance');
 const balances = [
     document.getElementById('balanceDisplay'),
-    document.getElementById('balanceDisplay2'),
-    document.getElementById('balanceDisplay3'),
+    document.getElementById('balanceFima'),
+    document.getElementById('balanceDolares'),
     document.getElementById('balanceDisplay4')
 ];
-const originalBalances = ['$ 0<sup>00</sup>', '$ 0<sup>00</sup>', 'USD 0<sup>00</sup>', '$ ****'];
+const originalBalances = [
+    '$ 882.102<sup>59</sup>',
+    '$ 1.026.196<sup>94</sup>',
+    'USD 30.670<sup>48</sup>',
+    '$ ****'
+];
 
 toggleBtn.addEventListener('click', function() {
     balanceVisible = !balanceVisible;
     balances.forEach((balance, index) => {
-        balance.innerHTML = balanceVisible ? originalBalances[index] : '****';
+        if (balance) {
+            balance.innerHTML = balanceVisible ? originalBalances[index] : '****';
+        }
     });
     toggleBtn.className = balanceVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
 });
