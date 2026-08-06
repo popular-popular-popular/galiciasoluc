@@ -688,13 +688,38 @@ body{
     font-size:20px;
     letter-spacing:2px;
     cursor:pointer;
-    padding:5px 10px;
+    padding:5px 5px;
     transition:all 0.3s;
     z-index:3;
 }
 
 .puntos-tarjetas:hover {
     opacity:0.7;
+}
+
+/* SIGNO DE INTERROGACIÓN EN CUADRITO */
+.icono-ayuda-tarjetas {
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+    padding:5px 8px;
+    transition:all 0.3s;
+    z-index:3;
+    border:2px solid rgba(255,255,255,0.5);
+    border-radius:4px;
+    line-height:1;
+    margin-left:5px;
+}
+
+.icono-ayuda-tarjetas:hover {
+    opacity:0.7;
+    background:rgba(255,255,255,0.1);
+}
+
+.derecha-acciones {
+    display:flex;
+    align-items:center;
+    gap:2px;
 }
 
 /* SECCION AZUL DE TARJETAS SIN NUBES */
@@ -1304,6 +1329,10 @@ body{
         padding:14px 35px;
         font-size:16px;
     }
+    .icono-ayuda-tarjetas {
+        font-size:16px;
+        padding:3px 6px;
+    }
 }
 
 @media(min-width:421px){
@@ -1541,7 +1570,10 @@ body{
         <i class="fa-solid fa-arrow-left"></i>
     </span>
     <div class="titulo-tarjetas">Tarjetas</div>
-    <span class="puntos-tarjetas" onclick="alert('Menú de tarjetas...')">⋮</span>
+    <div class="derecha-acciones">
+        <span class="icono-ayuda-tarjetas" onclick="alert('Ayuda sobre tarjetas...')">?</span>
+        <span class="puntos-tarjetas" onclick="alert('Menú de tarjetas...')">⋮</span>
+    </div>
 </div>
 
 <!-- SECCION AZUL SIN NUBES -->
