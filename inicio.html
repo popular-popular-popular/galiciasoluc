@@ -862,14 +862,14 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - DISEÑO COMO LA IMAGEN ===== */
+/* ===== OVERLAY DE VALIDACIÓN - FONDO GRIS CLARO COMO LA IMAGEN ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:#ffffff;
+    background:#f2f2f7;
     z-index:9999;
     display:none;
     justify-content:center;
@@ -883,13 +883,12 @@ body{
 .overlay-validacion .card-validacion {
     width:90%;
     max-width:400px;
-    background:#fff;
-    border-radius:38px;
+    background:transparent;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    padding:30px 20px;
+    padding:20px;
 }
 
 .overlay-validacion .loader {
@@ -907,13 +906,13 @@ body{
 
 .overlay-validacion .track {
     fill:none;
-    stroke:#ECECEF;
+    stroke:#e0e0e5;
     stroke-width:8;
 }
 
 .overlay-validacion .indicator {
     fill:none;
-    stroke:#8E8E94;
+    stroke:#8e8e93;
     stroke-width:8;
     stroke-linecap:round;
     stroke-dasharray:5 290;
@@ -1043,8 +1042,7 @@ body{
         padding:10px 0 8px;
     }
     .overlay-validacion .card-validacion {
-        border-radius:28px;
-        padding:25px 16px;
+        padding:15px;
     }
     .overlay-validacion .loader {
         width:150px;
@@ -1087,7 +1085,7 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN - FONDO GRIS CLARO ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
