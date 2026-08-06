@@ -376,7 +376,60 @@ body{
     color:#fff;
 }
 
-.actions{
+/* ===== CUENTA FIMA ===== */
+.cuenta-fima {
+    text-align:center;
+    margin-top:5px;
+    position:relative;
+    z-index:2;
+}
+
+.cuenta-fima .fima-header {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-bottom:4px;
+}
+
+.cuenta-fima .fima-header h3 {
+    font-size:16px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.cuenta-fima .fima-header .porcentaje {
+    font-size:14px;
+    font-weight:bold;
+    color:#4CAF50;
+    background:rgba(76,175,80,0.2);
+    padding:2px 10px;
+    border-radius:12px;
+}
+
+.cuenta-fima .balance-fima {
+    font-size:38px;
+    font-weight:bold;
+    color:#fff;
+    margin-top:2px;
+}
+
+.cuenta-fima .balance-fima sup {
+    font-size:16px;
+}
+
+.cuenta-fima .rendimiento-fima {
+    font-size:13px;
+    color:rgba(255,255,255,0.8);
+    margin-top:2px;
+}
+
+.cuenta-fima .rendimiento-fima .monto {
+    color:#4CAF50;
+    font-weight:bold;
+}
+
+.actions-fima {
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:8px;
@@ -386,7 +439,7 @@ body{
     align-items:start;
 }
 
-.btn-accion-img {
+.actions-fima .btn-accion-img {
     width:60px;
     height:60px;
     object-fit:contain;
@@ -397,39 +450,8 @@ body{
     border-radius:8px;
 }
 
-.btn-accion-img:hover {
+.actions-fima .btn-accion-img:hover {
     transform:scale(1.1);
-}
-
-.action{
-    text-align:center;
-    cursor:pointer;
-    transition:all 0.3s;
-}
-
-.action:hover{
-    transform:translateY(-3px);
-}
-
-.action i {
-    font-size:24px;
-    color:#fff;
-    display:block;
-    margin:0 auto;
-    width:50px;
-    height:50px;
-    line-height:50px;
-    text-align:center;
-    border-radius:50%;
-    background:rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.08);
-}
-
-.action p{
-    margin-top:4px;
-    font-size:11px;
-    opacity:0.9;
-    color:#fff;
 }
 
 /* IMAGEN TOQUE - SOLO IMAGEN ESTATICA */
@@ -1336,6 +1358,12 @@ body{
         padding:2px 6px;
         left: -16px;
     }
+    .cuenta-fima .balance-fima {
+        font-size:32px;
+    }
+    .cuenta-fima .fima-header h3 {
+        font-size:14px;
+    }
 }
 
 @media(min-width:421px){
@@ -1445,7 +1473,7 @@ body{
     <div class="slide-container">
         <div class="slide-track" id="slideTrack">
 
-            <!-- SLIDE 1 - Caja de ahorro en pesos con datos reales -->
+            <!-- SLIDE 0 - Caja de ahorro en pesos -->
             <div class="slide active" data-slide="0">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
@@ -1460,26 +1488,27 @@ body{
                 </div>
             </div>
 
-            <!-- SLIDE 2 -->
+            <!-- SLIDE 1 - Cuenta FIMA -->
             <div class="slide" data-slide="1">
-                <div class="account">
-                    <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay2">$ 882.102<sup>59</sup></div>
-                    <div class="number">★ Nº 4141543-3 104-3</div>
+                <div class="cuenta-fima">
+                    <div class="fima-header">
+                        <h3>Cuenta Fima</h3>
+                        <span class="porcentaje">16,6%</span>
+                    </div>
+                    <div class="balance-fima" id="balanceFima">$ 1.026.196<sup>94</sup></div>
+                    <div class="rendimiento-fima">
+                        + <span class="monto">$ 466,91</span> Último rendimiento diario
+                    </div>
                 </div>
-                <div class="fima-box">
-                    <h4>💰 Activa Cuenta FIMA y hace rendir tus pesos un 16,6% anual</h4>
-                    <button class="btn-fima" onclick="alert('Activando cuenta FIMA...')">Activar Cuenta FIMA</button>
-                </div>
-                <div class="actions">
+                <div class="actions-fima">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
-                    <img src="ingresar.jpeg" alt="Ingresar" class="btn-accion-img" onclick="alert('Ingresar...')">
-                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
-                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                    <img src="ingresar.jpeg" alt="Agregar" class="btn-accion-img" onclick="alert('Agregar...')">
+                    <img src="alias.jpeg" alt="Retirar" class="btn-accion-img" onclick="alert('Retirar...')">
+                    <img src="comprar.jpeg" alt="Rendimiento" class="btn-accion-img" onclick="alert('Rendimiento...')">
                 </div>
             </div>
 
-            <!-- SLIDE 3 -->
+            <!-- SLIDE 2 - Caja de ahorro en dólares -->
             <div class="slide" data-slide="2">
                 <div class="account">
                     <h3>Caja de ahorro en dólares</h3>
@@ -1499,7 +1528,7 @@ body{
                 </div>
             </div>
 
-            <!-- SLIDE 4 -->
+            <!-- SLIDE 3 - Caja de ahorro en pesos (oculto) -->
             <div class="slide" data-slide="3">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
@@ -2042,13 +2071,13 @@ let balanceVisible = true;
 const toggleBtn = document.getElementById('toggleBalance');
 const balances = [
     document.getElementById('balanceDisplay'),
-    document.getElementById('balanceDisplay2'),
+    document.getElementById('balanceFima'),
     document.getElementById('balanceDisplay3'),
     document.getElementById('balanceDisplay4')
 ];
 const originalBalances = [
     '$ 882.102<sup>59</sup>',
-    '$ 882.102<sup>59</sup>',
+    '$ 1.026.196<sup>94</sup>',
     'USD 0<sup>00</sup>',
     '$ ****'
 ];
@@ -2056,7 +2085,9 @@ const originalBalances = [
 toggleBtn.addEventListener('click', function() {
     balanceVisible = !balanceVisible;
     balances.forEach((balance, index) => {
-        balance.innerHTML = balanceVisible ? originalBalances[index] : '****';
+        if (balance) {
+            balance.innerHTML = balanceVisible ? originalBalances[index] : '****';
+        }
     });
     toggleBtn.className = balanceVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash';
 });
