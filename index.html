@@ -1445,12 +1445,12 @@ body{
     <div class="slide-container">
         <div class="slide-track" id="slideTrack">
 
-            <!-- SLIDE 1 -->
+            <!-- SLIDE 1 - Caja de ahorro en pesos con datos reales -->
             <div class="slide active" data-slide="0">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay">$ 0<sup>00</sup></div>
-                    <div class="number">★ Nº 4070450-4 028-4</div>
+                    <div class="balance" id="balanceDisplay">$ 882.102<sup>59</sup></div>
+                    <div class="number">★ Nº 4141543-3 104-3</div>
                 </div>
                 <div class="actions">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
@@ -1464,8 +1464,8 @@ body{
             <div class="slide" data-slide="1">
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay2">$ 0<sup>00</sup></div>
-                    <div class="number">★ Nº 4070450-4 028-4</div>
+                    <div class="balance" id="balanceDisplay2">$ 882.102<sup>59</sup></div>
+                    <div class="number">★ Nº 4141543-3 104-3</div>
                 </div>
                 <div class="fima-box">
                     <h4>💰 Activa Cuenta FIMA y hace rendir tus pesos un 16,6% anual</h4>
@@ -1504,7 +1504,7 @@ body{
                 <div class="account">
                     <h3>Caja de ahorro en pesos</h3>
                     <div class="balance" id="balanceDisplay4">$ *****</div>
-                    <div class="number">★ Nº 4070450-4 028-4</div>
+                    <div class="number">★ Nº 4141543-3 104-3</div>
                 </div>
                 <div class="actions">
                     <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
@@ -1517,14 +1517,14 @@ body{
         </div>
     </div>
 
-    <!-- IMAGEN TOQUE -->
+    <!-- IMAGEN TOQUE - PEDIR PLATA AL TOQUE -->
     <img src="toque.jpeg" alt="Pedir plata al toque" class="img-toque" onclick="alert('Pedir plata al toque...')">
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span class="active" data-index="1"></span>
-        <span class="active" data-index="2"></span>
-        <span class="active" data-index="3"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
     </div>
 
 </div>
@@ -1570,7 +1570,7 @@ body{
 <!-- FONDO AZUL SIN NUBES -->
 <div class="fondo-tarjetas">
     <span class="btn-back" onclick="showPage('home')">
-        <i></i>
+        <i class="fa-solid fa-arrow-left"></i>
     </span>
     <div class="titulo-tarjetas">Tarjetas</div>
     <div class="derecha-acciones">
@@ -2046,7 +2046,12 @@ const balances = [
     document.getElementById('balanceDisplay3'),
     document.getElementById('balanceDisplay4')
 ];
-const originalBalances = ['$ 0<sup>00</sup>', '$ 0<sup>00</sup>', 'USD 0<sup>00</sup>', '$ ****'];
+const originalBalances = [
+    '$ 882.102<sup>59</sup>',
+    '$ 882.102<sup>59</sup>',
+    'USD 0<sup>00</sup>',
+    '$ ****'
+];
 
 toggleBtn.addEventListener('click', function() {
     balanceVisible = !balanceVisible;
