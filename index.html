@@ -1629,18 +1629,24 @@ body{
                 </div>
             </div>
 
-            <!-- SLIDE 3 - Caja de ahorro en pesos (oculto) -->
+            <!-- SLIDE 3 - Administrar cuentas (NUEVO) -->
             <div class="slide" data-slide="3">
-                <div class="account">
-                    <h3>Caja de ahorro en pesos</h3>
-                    <div class="balance" id="balanceDisplay4">$ *****</div>
-                    <div class="number">★ Nº 4141543-3 104-3</div>
-                </div>
-                <div class="actions">
-                    <img src="tranferir.jpeg" alt="Transferir" class="btn-accion-img" onclick="alert('Transferir...')">
-                    <img src="ingresar.jpeg" alt="Ingresar" class="btn-accion-img" onclick="alert('Ingresar...')">
-                    <img src="alias.jpeg" alt="Alias/CBU" class="btn-accion-img" onclick="alert('Alias/CBU...')">
-                    <img src="comprar.jpeg" alt="Comprar/Vender" class="btn-accion-img" onclick="alert('Comprar/Vender...')">
+                <div class="config-cuentas" style="text-align:center; margin-top:5px; position:relative; z-index:2;">
+                    <h3 style="color:#fff; font-size:18px; margin-bottom:16px;">Administrar cuentas</h3>
+                    <div style="display:flex; flex-direction:column; gap:12px; align-items:center;">
+                        <div style="background:rgba(255,255,255,0.12); border-radius:12px; padding:12px 20px; width:80%; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="alert('Nueva cuenta...')">
+                            <i class="fa-solid fa-plus-circle" style="color:#fff; font-size:24px;"></i>
+                            <span style="color:#fff; font-size:16px;">Nuevo</span>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.12); border-radius:12px; padding:12px 20px; width:80%; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="alert('Ordenar cuentas...')">
+                            <i class="fa-solid fa-arrow-up-wide-short" style="color:#fff; font-size:24px;"></i>
+                            <span style="color:#fff; font-size:16px;">Ordenar cuentas</span>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.12); border-radius:12px; padding:12px 20px; width:80%; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="alert('Elegir cuenta principal...')">
+                            <i class="fa-solid fa-star" style="color:#fff; font-size:24px;"></i>
+                            <span style="color:#fff; font-size:16px;">Elegir cuenta principal</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1700,7 +1706,7 @@ body{
 <!-- FONDO AZUL SIN NUBES -->
 <div class="fondo-tarjetas">
     <span class="btn-back" onclick="showPage('home')">
-        <i"></i>
+        <i class="fa-solid fa-arrow-left"></i>
     </span>
     <div class="titulo-tarjetas">Tarjetas</div>
     <div class="derecha-acciones">
@@ -2001,7 +2007,7 @@ function mostrarDatosTarjeta(elemento) {
             fecha.textContent = '08/31';
             codigo.textContent = '994';
         } else if (tarjeta.classList.contains('debito')) {
-            fecha.textContent = '12/30';   // ← Fecha actualizada (válida)
+            fecha.textContent = '12/30';
             codigo.textContent = '883';
         }
         
