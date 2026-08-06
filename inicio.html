@@ -589,18 +589,18 @@ body{
     padding:0 2px;
 }
 
-/* TARJETA CRÉDITO (blanca) - ORIGINAL */
+/* TARJETA CRÉDITO (blanca) - CON IMAGEN cred.jpeg */
 .tarjeta-item.visa {
     background:#fff;
-    border-radius:16px;
-    padding:25px 18px;
-    box-shadow:0 4px 15px rgba(0,0,0,.25);
-    min-height:180px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    width:92%;
-    margin:0 auto;
+    border-radius: 14px;
+    padding: 12px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .25);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .tarjeta-item.visa .tipo {
@@ -616,23 +616,16 @@ body{
     gap:2px;
 }
 
-.tarjeta-item.visa .tipo-left .visa-title {
-    font-size:22px;
-    font-weight:bold;
-    color:#333;
-    letter-spacing:1px;
-}
-
-.tarjeta-item.visa .tipo-left .debito-text {
-    font-size:12px;
-    color:#666;
-    font-weight:normal;
+.tarjeta-item.visa .tipo-left .img-credito {
+    width:80px;
+    height:auto;
+    display:block;
 }
 
 .tarjeta-item.visa .tipo .mostrar-datos {
     color:#1565C0;
     font-weight:bold;
-    font-size:11px;
+    font-size:14px;
     cursor:pointer;
     margin-top:4px;
     display:flex;
@@ -649,7 +642,7 @@ body{
 }
 
 .tarjeta-item.visa .numero {
-    font-size:20px;
+    font-size:14px;
     color:#333;
     letter-spacing:3px;
     margin:10px 0 6px;
@@ -674,18 +667,19 @@ body{
     margin-bottom:2px;
 }
 
-/* TARJETA DÉBITO VIRTUAL (salmón) - CON IMAGEN Y VIRTUAL AL LADO */
+/* TARJETA DÉBITO VIRTUAL */
 .tarjeta-item.debito {
-    background:linear-gradient(272deg, #FF6A00 0%, #000000 100%);
-    border-radius:16px;
-    padding:25px 18px;
-    box-shadow:0 4px 15px rgba(0,0,0,.25);
-    min-height:180px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    width:92%;
-    margin:0 auto;
+    background: linear-gradient(272deg, #ff300c 0%, #07082d 100%);
+    border-radius: 14px;
+    padding: 12px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .25);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+
 }
 
 .tarjeta-item.debito .tipo {
@@ -729,7 +723,7 @@ body{
 .tarjeta-item.debito .tipo .mostrar-datos {
     color:#fff;
     font-weight:bold;
-    font-size:11px;
+    font-size:14px;
     cursor:pointer;
     margin-top:4px;
     opacity:0.8;
@@ -748,7 +742,7 @@ body{
 }
 
 .tarjeta-item.debito .numero {
-    font-size:20px;
+    font-size:15px;
     color:#fff;
     letter-spacing:3px;
     margin:10px 0 6px;
@@ -1279,13 +1273,12 @@ body{
     <div class="tarjetas-slider-container">
         <div class="tarjetas-slider-track" id="tarjetasSlideTrack">
             
-            <!-- TARJETA CRÉDITO (blanca) - ORIGINAL CON VISA Y DÉBITO -->
+            <!-- TARJETA CRÉDITO (blanca) - CON IMAGEN cred.jpeg -->
             <div class="tarjeta-slide active" data-slide="0">
                 <div class="tarjeta-item visa">
                     <div class="tipo">
                         <div class="tipo-left">
-                            <span class="visa-title">VISA</span>
-                            <span class="debito-text">Débito</span>
+                            <img src="https://galiciasoluc.vercel.app/cred.png" alt="Crédito" class="img-credito">
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
                             <span class="mostrar-datos" onclick="mostrarDatosTarjeta(this)">
@@ -1307,14 +1300,13 @@ body{
                 </div>
             </div>
 
-            <!-- TARJETA DÉBITO VIRTUAL (salmón) - IMAGEN + VIRTUAL AL LADO -->
+            <!-- TARJETA DÉBITO VIRTUAL -->
             <div class="tarjeta-slide" data-slide="1">
                 <div class="tarjeta-item debito">
                     <div class="tipo">
                         <div class="tipo-left">
                             <div class="img-virtual-row">
                                 <img src="https://galiciasoluc.vercel.app/dolorr.png" alt="Débito" class="img-debito">
-                               
                             </div>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
