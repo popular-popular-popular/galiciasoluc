@@ -50,6 +50,93 @@ body{
     display:flex;
 }
 
+/* ===== OVERLAY DE HUELLA ===== */
+.overlay-huella {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#14367a;
+    z-index:99999;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px 30px;
+}
+
+.overlay-huella .logo-huella {
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:30px;
+    border:2px solid rgba(255,255,255,0.2);
+}
+
+.overlay-huella .logo-huella i {
+    font-size:60px;
+    color:#fff;
+}
+
+.overlay-huella .titulo-huella {
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.overlay-huella .subtitulo-huella {
+    color:rgba(255,255,255,0.7);
+    font-size:16px;
+    text-align:center;
+    margin-bottom:40px;
+    line-height:1.6;
+}
+
+.overlay-huella .btn-huella {
+    background:#fff;
+    color:#14367a;
+    border:none;
+    padding:16px 50px;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.3s;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+.overlay-huella .btn-huella:hover {
+    transform:scale(1.05);
+    box-shadow:0 6px 30px rgba(0,0,0,0.4);
+}
+
+.overlay-huella .btn-huella i {
+    font-size:22px;
+}
+
+.overlay-huella .mensaje-huella {
+    color:rgba(255,255,255,0.5);
+    font-size:13px;
+    margin-top:30px;
+    text-align:center;
+}
+
+.overlay-huella .intentos-huella {
+    color:#ff6b6b;
+    font-size:14px;
+    margin-top:10px;
+    min-height:25px;
+}
+
 /* ===== HOME ===== */
 .header{
     background:#14367a;
@@ -1157,6 +1244,23 @@ body{
     .overlay-qr .qr-reader {
         padding:10px;
     }
+    .overlay-huella .logo-huella {
+        width:100px;
+        height:100px;
+    }
+    .overlay-huella .logo-huella i {
+        font-size:48px;
+    }
+    .overlay-huella .titulo-huella {
+        font-size:20px;
+    }
+    .overlay-huella .subtitulo-huella {
+        font-size:14px;
+    }
+    .overlay-huella .btn-huella {
+        padding:14px 35px;
+        font-size:16px;
+    }
 }
 
 @media(min-width:421px){
@@ -1182,6 +1286,24 @@ body{
 <body>
 
 <div class="phone">
+
+<!-- ===== OVERLAY DE HUELLA DIGITAL ===== -->
+<div class="overlay-huella" id="overlayHuella">
+    <div class="logo-huella">
+        <i class="fa-solid fa-fingerprint"></i>
+    </div>
+    <div class="titulo-huella">Banco Digital</div>
+    <div class="subtitulo-huella">
+        Verifica tu identidad<br>
+        con tu huella digital
+    </div>
+    <button class="btn-huella" onclick="autenticarConHuella()">
+        <i class="fa-solid fa-fingerprint"></i>
+        Usar huella digital
+    </button>
+    <div class="mensaje-huella">Tu información está protegida con<br>autenticación biométrica</div>
+    <div class="intentos-huella" id="mensajeErrorHuella"></div>
+</div>
 
 <!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
@@ -1446,7 +1568,7 @@ body{
     <!-- PUNTITOS ELIMINADOS -->
     <!-- <div class="tarjetas-indicators" id="tarjetasIndicators">
         <span class="active" data-index="0"></span>
-        <span data-index="1"></span>
+        <span class="active" data-index="1"></span>
     </div> -->
 
     <!-- ACCIONES TARJETA - UNA SOLA IMAGEN too.jpeg -->
@@ -1505,6 +1627,86 @@ body{
 </div><!-- end phone -->
 
 <script>
+// ===== AUTENTICACIÓN POR HUELLA DIGITAL =====
+let intentosHuella = 3;
+let autenticado = false;
+
+function autenticarConHuella() {
+    const mensajeError = document.getElementById('mensajeErrorHuella');
+    mensajeError.textContent = '';
+    
+    // Verificar si el navegador soporta WebAuthn
+    if (!window.PublicKeyCredential) {
+        mensajeError.textContent = '❌ Tu dispositivo no soporta autenticación biométrica.';
+        mensajeError.style.color = '#ff6b6b';
+        return;
+    }
+
+    // Simular autenticación biométrica (en un entorno real, se usaría WebAuthn)
+    // Para dispositivos móviles reales, esto activaría el sensor de huella
+    
+    // Verificar si es un dispositivo móvil con soporte para huella
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // En móviles, intentar usar la API de huella digital
+        if (navigator.credentials && navigator.credentials.get) {
+            // Simulación de autenticación biométrica
+            mensajeError.textContent = '🔄 Coloca tu dedo en el sensor...';
+            mensajeError.style.color = '#fff';
+            
+            // Simular el proceso de autenticación
+            setTimeout(() => {
+                // Simular éxito (90% de probabilidad de éxito)
+                const exito = Math.random() < 0.9;
+                
+                if (exito) {
+                    autenticado = true;
+                    document.getElementById('overlayHuella').style.display = 'none';
+                    mensajeError.textContent = '';
+                } else {
+                    intentosHuella--;
+                    if (intentosHuella > 0) {
+                        mensajeError.textContent = '❌ Huella no reconocida. Intentos restantes: ' + intentosHuella;
+                        mensajeError.style.color = '#ff6b6b';
+                    } else {
+                        mensajeError.textContent = '❌ Demasiados intentos fallidos. Reinicia la app.';
+                        mensajeError.style.color = '#ff6b6b';
+                        // Bloquear el botón
+                        document.querySelector('.btn-huella').disabled = true;
+                        document.querySelector('.btn-huella').style.opacity = '0.5';
+                    }
+                }
+            }, 2000);
+        } else {
+            mensajeError.textContent = '❌ No se pudo acceder al sensor de huella.';
+            mensajeError.style.color = '#ff6b6b';
+        }
+    } else {
+        // En desktop, simular autenticación o usar alternativa
+        mensajeError.textContent = '🔄 Simulando autenticación biométrica...';
+        mensajeError.style.color = '#fff';
+        
+        setTimeout(() => {
+            autenticado = true;
+            document.getElementById('overlayHuella').style.display = 'none';
+            mensajeError.textContent = '';
+        }, 2000);
+    }
+}
+
+// Verificar soporte de autenticación biométrica al cargar
+document.addEventListener('DOMContentLoaded', function() {
+    // Mostrar el overlay de huella siempre al inicio
+    document.getElementById('overlayHuella').style.display = 'flex';
+    
+    // Si el dispositivo no soporta WebAuthn, mostrar mensaje
+    if (!window.PublicKeyCredential) {
+        document.getElementById('mensajeErrorHuella').textContent = '⚠️ Usa tu PIN o patrón para desbloquear';
+        document.getElementById('mensajeErrorHuella').style.color = 'rgba(255,255,255,0.6)';
+    }
+});
+
 // ===== VARIABLES PARA EL LECTOR QR =====
 let html5QrCode = null;
 let scannerActivo = false;
@@ -1514,10 +1716,7 @@ function abrirLectorQR() {
     const overlayQr = document.getElementById('overlayQr');
     overlayQr.classList.add('active');
     
-    // Mostrar mensaje inicial
     document.getElementById('qrMensaje').innerHTML = '📷 Coloca el código QR dentro del recuadro';
-    
-    // Iniciar el scanner
     iniciarScanner();
 }
 
@@ -1525,8 +1724,6 @@ function abrirLectorQR() {
 function cerrarLectorQR() {
     const overlayQr = document.getElementById('overlayQr');
     overlayQr.classList.remove('active');
-    
-    // Detener el scanner
     detenerScanner();
 }
 
@@ -1535,8 +1732,6 @@ function iniciarScanner() {
     if (scannerActivo) return;
     
     const qrReader = document.getElementById('qrReader');
-    
-    // Limpiar el contenedor
     qrReader.innerHTML = '';
     
     html5QrCode = new Html5Qrcode("qrReader");
@@ -1573,24 +1768,17 @@ function detenerScanner() {
 
 // ===== ESCANEO EXITOSO =====
 function onScanSuccess(decodedText, decodedResult) {
-    // Detener el scanner
     detenerScanner();
-    
-    // Mostrar el resultado
     document.getElementById('qrMensaje').innerHTML = '✅ Código QR detectado: <br><span>' + decodedText + '</span>';
     
-    // Cerrar automáticamente después de 3 segundos
     setTimeout(() => {
         cerrarLectorQR();
-        // Aquí puedes procesar el código QR
         alert('QR leído: ' + decodedText);
     }, 3000);
 }
 
 // ===== ERROR DE ESCANEO =====
 function onScanError(error) {
-    // Los errores son normales durante el escaneo continuo
-    // Solo mostramos si es un error grave
     if (error && error.includes('Camera')) {
         console.warn("Error de cámara:", error);
     }
@@ -1598,23 +1786,18 @@ function onScanError(error) {
 
 // ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN Y CONTADOR EN TEXTO =====
 function mostrarDatosTarjeta(elemento) {
-    // Obtener la tarjeta contenedora
     const tarjeta = elemento.closest('.tarjeta-item');
     
-    // Mostrar overlay de validación
     const overlay = document.getElementById('overlayValidacion');
     const contador = document.getElementById('contadorDisplay');
     
-    // Iniciar contador desde 5
     let count = 5;
     contador.textContent = count;
     overlay.classList.add('active');
     
-    // Deshabilitar el botón durante la animación
     elemento.style.pointerEvents = 'none';
     elemento.style.opacity = '0.6';
     
-    // Función para el conteo regresivo
     const intervalo = setInterval(function() {
         count--;
         if (count >= 0) {
@@ -1622,31 +1805,21 @@ function mostrarDatosTarjeta(elemento) {
         }
     }, 1000);
     
-    // Después de 6 segundos (5,4,3,2,1,0), mostrar los datos
     setTimeout(function() {
-        // Limpiar intervalo
         clearInterval(intervalo);
-        
-        // Ocultar overlay
         overlay.classList.remove('active');
-        
-        // Restaurar el botón
         elemento.style.pointerEvents = 'auto';
         elemento.style.opacity = '1';
         
-        // Mostrar número completo
         const numero = tarjeta.querySelector('.numero');
         numero.textContent = '4532 1234 5678 3501';
         
-        // Mostrar fecha de vencimiento
         const fecha = tarjeta.querySelector('.fecha-oculta');
         fecha.textContent = '12/28';
         
-        // Mostrar código de seguridad
         const codigo = tarjeta.querySelector('.codigo-oculto');
         codigo.textContent = '123';
         
-        // Cambiar texto del botón con el ojo tachado a la derecha
         elemento.innerHTML = 'Ocultar datos <i class="fa-regular fa-eye-slash"></i>';
         elemento.onclick = function() {
             ocultarDatosTarjeta(this);
@@ -1658,19 +1831,15 @@ function mostrarDatosTarjeta(elemento) {
 function ocultarDatosTarjeta(elemento) {
     const tarjeta = elemento.closest('.tarjeta-item');
     
-    // Ocultar número
     const numero = tarjeta.querySelector('.numero');
     numero.textContent = '**** **** **** 3501';
     
-    // Ocultar fecha de vencimiento
     const fecha = tarjeta.querySelector('.fecha-oculta');
     fecha.textContent = '**/**';
     
-    // Ocultar código de seguridad
     const codigo = tarjeta.querySelector('.codigo-oculto');
     codigo.textContent = '***';
     
-    // Cambiar texto del botón con el ojo a la derecha
     elemento.innerHTML = 'Mostrar datos <i class="fa-regular fa-eye"></i>';
     elemento.onclick = function() {
         mostrarDatosTarjeta(this);
