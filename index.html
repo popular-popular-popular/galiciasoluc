@@ -376,60 +376,7 @@ body{
     color:#fff;
 }
 
-/* ===== CUENTA FIMA ===== */
-.cuenta-fima {
-    text-align:center;
-    margin-top:5px;
-    position:relative;
-    z-index:2;
-}
-
-.cuenta-fima .fima-header {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    margin-bottom:4px;
-}
-
-.cuenta-fima .fima-header h3 {
-    font-size:16px;
-    font-weight:bold;
-    color:#fff;
-}
-
-.cuenta-fima .fima-header .porcentaje {
-    font-size:14px;
-    font-weight:bold;
-    color:#4CAF50;
-    background:rgba(76,175,80,0.2);
-    padding:2px 10px;
-    border-radius:12px;
-}
-
-.cuenta-fima .balance-fima {
-    font-size:38px;
-    font-weight:bold;
-    color:#fff;
-    margin-top:2px;
-}
-
-.cuenta-fima .balance-fima sup {
-    font-size:16px;
-}
-
-.cuenta-fima .rendimiento-fima {
-    font-size:13px;
-    color:rgba(255,255,255,0.8);
-    margin-top:2px;
-}
-
-.cuenta-fima .rendimiento-fima .monto {
-    color:#4CAF50;
-    font-weight:bold;
-}
-
-.actions-fima {
+.actions{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:8px;
@@ -439,7 +386,7 @@ body{
     align-items:start;
 }
 
-.actions-fima .btn-accion-img {
+.btn-accion-img {
     width:60px;
     height:60px;
     object-fit:contain;
@@ -450,8 +397,39 @@ body{
     border-radius:8px;
 }
 
-.actions-fima .btn-accion-img:hover {
+.btn-accion-img:hover {
     transform:scale(1.1);
+}
+
+.action{
+    text-align:center;
+    cursor:pointer;
+    transition:all 0.3s;
+}
+
+.action:hover{
+    transform:translateY(-3px);
+}
+
+.action i {
+    font-size:24px;
+    color:#fff;
+    display:block;
+    margin:0 auto;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.action p{
+    margin-top:4px;
+    font-size:11px;
+    opacity:0.9;
+    color:#fff;
 }
 
 /* IMAGEN TOQUE - SOLO IMAGEN ESTATICA */
@@ -626,7 +604,7 @@ body{
     padding:0 3px;
 }
 
-.fima-box, .dolar-box {
+.dolar-box {
     background:rgba(255,255,255,0.12);
     border-radius:10px;
     padding:10px 14px;
@@ -638,19 +616,19 @@ body{
     z-index:2;
 }
 
-.fima-box h4, .dolar-box h4 {
+.dolar-box h4 {
     font-size:13px;
     color:#fff;
 }
 
-.fima-box p, .dolar-box p {
+.dolar-box p {
     font-size:11px;
     opacity:0.9;
     color:#fff;
     margin-top:2px;
 }
 
-.btn-fima, .btn-dolar {
+.btn-dolar {
     background:#fff;
     color:#0D47A1;
     padding:5px 22px;
@@ -663,9 +641,89 @@ body{
     transition:all 0.3s;
 }
 
-.btn-fima:hover, .btn-dolar:hover {
+.btn-dolar:hover {
     transform:scale(1.05);
     box-shadow:0 3px 12px rgba(0,0,0,0.2);
+}
+
+/* ===== CUENTA FIMA ===== */
+.cuenta-fima {
+    text-align:center;
+    margin-top:5px;
+    position:relative;
+    z-index:2;
+}
+
+.cuenta-fima .fima-header {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:6px;
+}
+
+.cuenta-fima .fima-header h3 {
+    font-size:16px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.cuenta-fima .fima-header .porcentaje {
+    font-size:13px;
+    font-weight:bold;
+    color:#14367a;
+    background:#fff;
+    padding:2px 12px;
+    border-radius:20px;
+    display:inline-block;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+.cuenta-fima .balance-fima {
+    font-size:38px;
+    font-weight:bold;
+    color:#fff;
+    margin-top:2px;
+}
+
+.cuenta-fima .balance-fima sup {
+    font-size:16px;
+}
+
+.cuenta-fima .rendimiento-fima {
+    font-size:13px;
+    color:rgba(255,255,255,0.8);
+    margin-top:2px;
+}
+
+.cuenta-fima .rendimiento-fima .monto {
+    color:#4CAF50;
+    font-weight:bold;
+}
+
+.actions-fima {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:16px;
+    position:relative;
+    z-index:2;
+    align-items:start;
+}
+
+.actions-fima .btn-accion-img {
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto;
+    cursor:pointer;
+    transition:all 0.3s;
+    border-radius:8px;
+}
+
+.actions-fima .btn-accion-img:hover {
+    transform:scale(1.1);
 }
 
 /* ===== TARJETAS ===== */
@@ -1363,6 +1421,10 @@ body{
     }
     .cuenta-fima .fima-header h3 {
         font-size:14px;
+    }
+    .cuenta-fima .fima-header .porcentaje {
+        font-size:11px;
+        padding:2px 10px;
     }
 }
 
