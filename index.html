@@ -658,6 +658,9 @@ body{
     color:#fff;
     padding:16px 18px 16px 18px;
     position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 /* TITULO TARJETAS CENTRADO */
@@ -668,19 +671,55 @@ body{
     font-size:20px;
     font-weight:bold;
     color:#fff;
-    padding:5px 0 10px 0;
+    flex:1;
 }
 
 /* FLECHA VOLVER */
 .btn-back {
-    position:absolute;
-    left:18px;
-    top:50%;
-    transform:translateY(-50%);
     z-index:3;
     font-size:22px;
     color:#fff;
     cursor:pointer;
+}
+
+/* PUNTITOS BLANCOS - MENÚ TARJETAS */
+.puntos-tarjetas {
+    color:#fff;
+    font-size:20px;
+    letter-spacing:2px;
+    cursor:pointer;
+    padding:5px 5px;
+    transition:all 0.3s;
+    z-index:3;
+}
+
+.puntos-tarjetas:hover {
+    opacity:0.7;
+}
+
+/* SIGNO DE INTERROGACIÓN EN CUADRITO */
+.icono-ayuda-tarjetas {
+    color:#fff;
+    font-size:13px;
+    cursor:pointer;
+    padding:5px 8px;
+    transition:all 0.3s;
+    z-index:3;
+    border:2px solid rgba(255,255,255,0.5);
+    border-radius:4px;
+    line-height:1;
+    margin-left:5px;
+}
+
+.icono-ayuda-tarjetas:hover {
+    opacity:0.7;
+    background:rgba(255,255,255,0.1);
+}
+
+.derecha-acciones {
+    display:flex;
+    align-items:center;
+    gap:2px;
 }
 
 /* SECCION AZUL DE TARJETAS SIN NUBES */
@@ -1290,6 +1329,10 @@ body{
         padding:14px 35px;
         font-size:16px;
     }
+    .icono-ayuda-tarjetas {
+        font-size:16px;
+        padding:3px 6px;
+    }
 }
 
 @media(min-width:421px){
@@ -1524,9 +1567,13 @@ body{
 <!-- FONDO AZUL SIN NUBES -->
 <div class="fondo-tarjetas">
     <span class="btn-back" onclick="showPage('home')">
-        <i class="fa-solid fa-arrow-left"></i>
+        <i></i>
     </span>
     <div class="titulo-tarjetas">Tarjetas</div>
+    <div class="derecha-acciones">
+        <span class="icono-ayuda-tarjetas" onclick="alert('Ayuda sobre tarjetas...')">?</span>
+        <span class="puntos-tarjetas" onclick="alert('Menú de tarjetas...')">⋮</span>
+    </div>
 </div>
 
 <!-- SECCION AZUL SIN NUBES -->
@@ -1664,27 +1711,20 @@ function autenticarConHuella() {
     const estadoHuella = document.getElementById('estadoHuella');
     const iconoHuella = document.getElementById('iconoHuella');
     
-    // Deshabilitar el botón durante la animación
     btnHuella.disabled = true;
     
-    // Cambiar estado a "Leyendo..."
     estadoHuella.textContent = '🔍 Leyendo huella...';
     estadoHuella.className = 'estado-huella';
     
-    // Activar animación del icono
     iconoHuella.classList.add('activo');
     
-    // Simular el tiempo de lectura de huella (2 segundos)
     setTimeout(() => {
-        // Simular éxito (95% de probabilidad)
         const exito = Math.random() < 0.95;
         
         if (exito) {
-            // Autenticación exitosa
             estadoHuella.textContent = '✅ ¡Huella verificada!';
             estadoHuella.className = 'estado-huella exito';
             
-            // Esperar un momento y ocultar el overlay
             setTimeout(() => {
                 autenticado = true;
                 document.getElementById('overlayHuella').style.display = 'none';
@@ -1694,15 +1734,12 @@ function autenticarConHuella() {
             }, 800);
             
         } else {
-            // Autenticación fallida
             estadoHuella.textContent = '❌ Huella no reconocida. Intenta de nuevo.';
             estadoHuella.className = 'estado-huella error';
             
-            // Reactivar el botón
             btnHuella.disabled = false;
             iconoHuella.classList.remove('activo');
             
-            // Después de 2 segundos, restaurar el mensaje inicial
             setTimeout(() => {
                 estadoHuella.textContent = 'Pon tu dedo en el sensor';
                 estadoHuella.className = 'estado-huella';
