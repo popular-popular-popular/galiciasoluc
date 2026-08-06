@@ -700,7 +700,7 @@ body{
 /* SIGNO DE INTERROGACIÓN EN CUADRITO */
 .icono-ayuda-tarjetas {
     color: #fff;
-    font-size: px;
+    font-size: 14px;
     cursor: pointer;
     padding: 2px 8px;
     transition: all 0.3s;
@@ -709,8 +709,7 @@ body{
     border-radius: 4px;
     line-height: 1;
     position: relative;
-    left: -22px;  /* Positivo = derecha, Negativo = izquierda */
-    /* right: 5px;  /* Alternativa: usa esto en lugar de left */
+    left: -22px;
 }
 
 .icono-ayuda-tarjetas:hover {
@@ -1044,7 +1043,7 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR EN TEXTO ===== */
+/* ===== OVERLAY DE VALIDACIÓN - TAMAÑO REDUCIDO ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
@@ -1056,7 +1055,7 @@ body{
     display:none;
     justify-content:center;
     align-items:center;
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(4px);
 }
 
 .overlay-validacion.active {
@@ -1064,41 +1063,41 @@ body{
 }
 
 .overlay-validacion .card-validacion {
-    width:90%;
-    max-width:400px;
+    width:80%;
+    max-width:340px;
     background:#fff;
-    border-radius:38px;
+    border-radius:30px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    padding:40px 20px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    padding:25px 15px 30px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.25);
 }
 
 .overlay-validacion .loader {
-    width:200px;
-    height:200px;
+    width:130px;
+    height:130px;
     position:relative;
-    margin-bottom:20px;
+    margin-bottom:12px;
 }
 
 .overlay-validacion .spinner {
-    width:200px;
-    height:200px;
+    width:130px;
+    height:130px;
     animation:rotate 2s linear infinite;
 }
 
 .overlay-validacion .track {
     fill:none;
     stroke:#ECECEF;
-    stroke-width:8;
+    stroke-width:7;
 }
 
 .overlay-validacion .indicator {
     fill:none;
     stroke:#8E8E94;
-    stroke-width:8;
+    stroke-width:7;
     stroke-linecap:round;
     stroke-dasharray:5 290;
     stroke-dashoffset:0;
@@ -1113,22 +1112,22 @@ body{
 }
 
 .overlay-validacion .icon svg {
-    width:70px;
-    height:70px;
+    width:48px;
+    height:48px;
 }
 
 .overlay-validacion .texto {
     text-align:center;
     color:#444;
-    font-size:20px;
-    line-height:1.45;
+    font-size:15px;
+    line-height:1.4;
     font-weight:500;
 }
 
 .overlay-validacion .texto .contador-numero {
     font-weight:bold;
     color:#444;
-    min-width:30px;
+    min-width:24px;
     display:inline-block;
 }
 
@@ -1293,23 +1292,24 @@ body{
         padding:10px 0 8px;
     }
     .overlay-validacion .card-validacion {
-        border-radius:28px;
-        padding:30px 16px;
+        width:85%;
+        padding:20px 12px 25px;
+        border-radius:24px;
     }
     .overlay-validacion .loader {
-        width:160px;
-        height:160px;
+        width:110px;
+        height:110px;
     }
     .overlay-validacion .spinner {
-        width:160px;
-        height:160px;
+        width:110px;
+        height:110px;
     }
     .overlay-validacion .icon svg {
-        width:56px;
-        height:56px;
+        width:40px;
+        height:40px;
     }
     .overlay-validacion .texto {
-        font-size:17px;
+        font-size:14px;
     }
     .overlay-qr .qr-reader {
         padding:10px;
@@ -1332,8 +1332,9 @@ body{
         font-size:16px;
     }
     .icono-ayuda-tarjetas {
-        font-size:16px;
-        padding:3px 6px;
+        font-size:12px;
+        padding:2px 6px;
+        left: -16px;
     }
 }
 
@@ -1379,7 +1380,7 @@ body{
     <div class="mensaje-huella">Tu información está protegida con<br>autenticación biométrica</div>
 </div>
 
-<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO (TAMAÑO REDUCIDO) ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
