@@ -667,6 +667,20 @@ body{
     margin-bottom:2px;
 }
 
+.tarjeta-item.visa .datos div .fecha-oculta {
+    display:block;
+    font-size:12px;
+    color:#333;
+    letter-spacing:2px;
+}
+
+.tarjeta-item.visa .datos div .codigo-oculto {
+    display:block;
+    font-size:12px;
+    color:#333;
+    letter-spacing:2px;
+}
+
 /* TARJETA DÉBITO VIRTUAL */
 .tarjeta-item.debito {
     background: linear-gradient(272deg, #ff300c 0%, #07082d 100%);
@@ -765,6 +779,20 @@ body{
     font-size:9px;
     color:rgba(255,255,255,0.6);
     margin-bottom:2px;
+}
+
+.tarjeta-item.debito .datos div .fecha-oculta {
+    display:block;
+    font-size:12px;
+    color:#fff;
+    letter-spacing:2px;
+}
+
+.tarjeta-item.debito .datos div .codigo-oculto {
+    display:block;
+    font-size:12px;
+    color:#fff;
+    letter-spacing:2px;
 }
 
 /* ELIMINADOS LOS PUNTITOS DEL SLIDER DE TARJETAS */
@@ -1290,11 +1318,11 @@ body{
                     <div class="datos">
                         <div>
                             <span>Fecha de vencimiento</span>
-                            12/28
+                            <span class="fecha-oculta">**/**</span>
                         </div>
                         <div>
                             <span>Código de seguridad</span>
-                            <span class="codigo">***</span>
+                            <span class="codigo-oculto">***</span>
                         </div>
                     </div>
                 </div>
@@ -1319,11 +1347,11 @@ body{
                     <div class="datos">
                         <div>
                             <span>Fecha de vencimiento</span>
-                            12/28
+                            <span class="fecha-oculta">**/**</span>
                         </div>
                         <div>
                             <span>Código de seguridad</span>
-                            <span class="codigo">***</span>
+                            <span class="codigo-oculto">***</span>
                         </div>
                     </div>
                 </div>
@@ -1436,8 +1464,12 @@ function mostrarDatosTarjeta(elemento) {
         const numero = tarjeta.querySelector('.numero');
         numero.textContent = '4532 1234 5678 3501';
         
+        // Mostrar fecha de vencimiento
+        const fecha = tarjeta.querySelector('.fecha-oculta');
+        fecha.textContent = '12/28';
+        
         // Mostrar código de seguridad
-        const codigo = tarjeta.querySelector('.codigo');
+        const codigo = tarjeta.querySelector('.codigo-oculto');
         codigo.textContent = '123';
         
         // Cambiar texto del botón con el ojo tachado a la derecha
@@ -1456,8 +1488,12 @@ function ocultarDatosTarjeta(elemento) {
     const numero = tarjeta.querySelector('.numero');
     numero.textContent = '**** **** **** 3501';
     
+    // Ocultar fecha de vencimiento
+    const fecha = tarjeta.querySelector('.fecha-oculta');
+    fecha.textContent = '**/**';
+    
     // Ocultar código de seguridad
-    const codigo = tarjeta.querySelector('.codigo');
+    const codigo = tarjeta.querySelector('.codigo-oculto');
     codigo.textContent = '***';
     
     // Cambiar texto del botón con el ojo a la derecha
