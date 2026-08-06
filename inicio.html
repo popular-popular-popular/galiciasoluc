@@ -862,18 +862,19 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - FONDO GRIS CLARO COMO LA IMAGEN ===== */
+/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR EN TEXTO ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:#f2f2f7;
+    background:rgba(0,0,0,0.5);
     z-index:9999;
     display:none;
     justify-content:center;
     align-items:center;
+    backdrop-filter:blur(8px);
 }
 
 .overlay-validacion.active {
@@ -883,19 +884,21 @@ body{
 .overlay-validacion .card-validacion {
     width:90%;
     max-width:400px;
-    background:transparent;
+    background:#fff;
+    border-radius:38px;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    padding:20px;
+    padding:40px 20px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
 }
 
 .overlay-validacion .loader {
     width:200px;
     height:200px;
     position:relative;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
 .overlay-validacion .spinner {
@@ -906,13 +909,13 @@ body{
 
 .overlay-validacion .track {
     fill:none;
-    stroke:#e0e0e5;
+    stroke:#ECECEF;
     stroke-width:8;
 }
 
 .overlay-validacion .indicator {
     fill:none;
-    stroke:#8e8e93;
+    stroke:#8E8E94;
     stroke-width:8;
     stroke-linecap:round;
     stroke-dasharray:5 290;
@@ -936,13 +939,14 @@ body{
     text-align:center;
     color:#444;
     font-size:20px;
-    line-height:1.5;
+    line-height:1.45;
     font-weight:500;
 }
 
 .overlay-validacion .texto .contador-numero {
     font-weight:bold;
     color:#444;
+    min-width:30px;
     display:inline-block;
 }
 
@@ -1042,19 +1046,20 @@ body{
         padding:10px 0 8px;
     }
     .overlay-validacion .card-validacion {
-        padding:15px;
+        border-radius:28px;
+        padding:30px 16px;
     }
     .overlay-validacion .loader {
-        width:150px;
-        height:150px;
+        width:160px;
+        height:160px;
     }
     .overlay-validacion .spinner {
-        width:150px;
-        height:150px;
+        width:160px;
+        height:160px;
     }
     .overlay-validacion .icon svg {
-        width:52px;
-        height:52px;
+        width:56px;
+        height:56px;
     }
     .overlay-validacion .texto {
         font-size:17px;
@@ -1085,7 +1090,7 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN - FONDO GRIS CLARO ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
