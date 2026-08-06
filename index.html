@@ -1994,10 +1994,16 @@ function mostrarDatosTarjeta(elemento) {
         }
         
         const fecha = tarjeta.querySelector('.fecha-oculta');
-        fecha.textContent = '12/28';
-        
         const codigo = tarjeta.querySelector('.codigo-oculto');
-        codigo.textContent = '123';
+        
+        // Asignar fechas y códigos diferentes según el tipo de tarjeta
+        if (tarjeta.classList.contains('visa')) {
+            fecha.textContent = '08/31';
+            codigo.textContent = '994';
+        } else if (tarjeta.classList.contains('debito')) {
+            fecha.textContent = '07/24';
+            codigo.textContent = '883';
+        }
         
         elemento.innerHTML = 'Ocultar datos <i class="fa-regular fa-eye-slash"></i>';
         elemento.onclick = function() {
