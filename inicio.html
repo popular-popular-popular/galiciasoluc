@@ -862,7 +862,7 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - FONDO BLANCO ===== */
+/* ===== OVERLAY DE VALIDACIÓN - DISEÑO COMO LA IMAGEN ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
@@ -889,14 +889,14 @@ body{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    padding:40px 20px;
+    padding:30px 20px;
 }
 
 .overlay-validacion .loader {
     width:200px;
     height:200px;
     position:relative;
-    margin-bottom:20px;
+    margin-bottom:30px;
 }
 
 .overlay-validacion .spinner {
@@ -937,14 +937,13 @@ body{
     text-align:center;
     color:#444;
     font-size:20px;
-    line-height:1.45;
+    line-height:1.5;
     font-weight:500;
 }
 
 .overlay-validacion .texto .contador-numero {
     font-weight:bold;
     color:#444;
-    min-width:30px;
     display:inline-block;
 }
 
@@ -1045,19 +1044,19 @@ body{
     }
     .overlay-validacion .card-validacion {
         border-radius:28px;
-        padding:30px 16px;
+        padding:25px 16px;
     }
     .overlay-validacion .loader {
-        width:160px;
-        height:160px;
+        width:150px;
+        height:150px;
     }
     .overlay-validacion .spinner {
-        width:160px;
-        height:160px;
+        width:150px;
+        height:150px;
     }
     .overlay-validacion .icon svg {
-        width:56px;
-        height:56px;
+        width:52px;
+        height:52px;
     }
     .overlay-validacion .texto {
         font-size:17px;
@@ -1088,7 +1087,7 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN CON FONDO BLANCO ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
@@ -1218,9 +1217,9 @@ body{
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span class="active" data-index="1"></span>
-        <span class="active" data-index="2"></span>
-        <span class="active" data-index="3"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
     </div>
 
 </div>
