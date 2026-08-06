@@ -862,45 +862,105 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN ===== */
+/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR EN TEXTO ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:#fff;
+    background:#ccc;
     z-index:9999;
     display:none;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    gap:30px;
+    backdrop-filter:blur(8px);
 }
 
 .overlay-validacion.active {
     display:flex;
 }
 
-.overlay-validacion .circulo {
-    width:80px;
-    height:80px;
-    border-radius:50%;
-    border:6px solid #e0e0e0;
-    border-top-color:#1565C0;
-    animation: girar 1s linear infinite;
+.overlay-validacion .card-validacion {
+    width:90%;
+    max-width:400px;
+    background:#fff;
+    border-radius:38px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+.overlay-validacion .loader {
+    width:200px;
+    height:200px;
+    position:relative;
+    margin-bottom:20px;
+}
+
+.overlay-validacion .spinner {
+    width:200px;
+    height:200px;
+    animation:rotate 2s linear infinite;
+}
+
+.overlay-validacion .track {
+    fill:none;
+    stroke:#ECECEF;
+    stroke-width:8;
+}
+
+.overlay-validacion .indicator {
+    fill:none;
+    stroke:#8E8E94;
+    stroke-width:8;
+    stroke-linecap:round;
+    stroke-dasharray:5 290;
+    stroke-dashoffset:0;
+    animation:dash 1.55s cubic-bezier(.4,0,.2,1) infinite;
+}
+
+.overlay-validacion .icon {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.overlay-validacion .icon svg {
+    width:70px;
+    height:70px;
 }
 
 .overlay-validacion .texto {
-    font-size:18px;
-    color:#333;
+    text-align:center;
+    color:#444;
+    font-size:20px;
+    line-height:1.45;
     font-weight:500;
 }
 
-@keyframes girar {
-    to {
-        transform:rotate(360deg);
-    }
+.overlay-validacion .texto .contador-numero {
+    font-weight:bold;
+    color:#444;
+    min-width:30px;
+    display:inline-block;
+}
+
+@keyframes rotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+
+@keyframes dash {
+    0% { stroke-dasharray:5 290; stroke-dashoffset:0; }
+    25% { stroke-dasharray:55 290; stroke-dashoffset:-18; }
+    50% { stroke-dasharray:120 290; stroke-dashoffset:-70; }
+    75% { stroke-dasharray:70 290; stroke-dashoffset:-170; }
+    100% { stroke-dasharray:5 290; stroke-dashoffset:-290; }
 }
 
 /* ===== FOOTER ===== */
@@ -985,6 +1045,25 @@ body{
         max-width:100%;
         padding:10px 0 8px;
     }
+    .overlay-validacion .card-validacion {
+        border-radius:28px;
+        padding:30px 16px;
+    }
+    .overlay-validacion .loader {
+        width:160px;
+        height:160px;
+    }
+    .overlay-validacion .spinner {
+        width:160px;
+        height:160px;
+    }
+    .overlay-validacion .icon svg {
+        width:56px;
+        height:56px;
+    }
+    .overlay-validacion .texto {
+        font-size:17px;
+    }
 }
 
 @media(min-width:421px){
@@ -1011,10 +1090,33 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
-    <div class="circulo"></div>
-    <div class="texto">Validando su token...</div>
+    <div class="card-validacion">
+        <div class="loader">
+            <svg class="spinner" viewBox="0 0 120 120">
+                <circle class="track" cx="60" cy="60" r="46"/>
+                <circle class="indicator" cx="60" cy="60" r="46"/>
+            </svg>
+            <div class="icon">
+                <svg viewBox="0 0 64 64" fill="none" stroke="#47474D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="8" y="16" width="30" height="20" rx="2"/>
+                    <circle cx="16" cy="26" r="1.3"/>
+                    <circle cx="24" cy="26" r="1.3"/>
+                    <circle cx="32" cy="26" r="1.3"/>
+                    <path d="M38 19v12"/>
+                    <rect x="30" y="33" width="16" height="16" rx="2"/>
+                    <path d="M34 33v-3.5a4 4 0 018 0V33"/>
+                    <circle cx="38" cy="41" r="1.3"/>
+                </svg>
+            </div>
+        </div>
+        <div class="texto">
+            Estamos verificando la<br>
+            seguridad de este dispositivo.<br>
+            Esto va a tardar <span class="contador-numero" id="contadorDisplay">5</span> segundos
+        </div>
+    </div>
 </div>
 
 <!-- ===== PÁGINA HOME ===== -->
@@ -1212,7 +1314,7 @@ body{
                         <div class="tipo-left">
                             <div class="img-virtual-row">
                                 <img src="debito.jpeg" alt="Débito" class="img-debito">
-                                <span class="virtual-badge">Virtual</span>
+                               
                             </div>
                         </div>
                         <div style="display:flex; flex-direction:column; align-items:flex-end; gap:4px;">
@@ -1300,19 +1402,43 @@ body{
 </div><!-- end phone -->
 
 <script>
-// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN =====
+// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN Y CONTADOR EN TEXTO =====
 function mostrarDatosTarjeta(elemento) {
     // Obtener la tarjeta contenedora
     const tarjeta = elemento.closest('.tarjeta-item');
     
     // Mostrar overlay de validación
     const overlay = document.getElementById('overlayValidacion');
+    const contador = document.getElementById('contadorDisplay');
+    
+    // Iniciar contador desde 5
+    let count = 5;
+    contador.textContent = count;
     overlay.classList.add('active');
     
-    // Después de 2.5 segundos, mostrar los datos completos
+    // Deshabilitar el botón durante la animación
+    elemento.style.pointerEvents = 'none';
+    elemento.style.opacity = '0.6';
+    
+    // Función para el conteo regresivo
+    const intervalo = setInterval(function() {
+        count--;
+        if (count >= 0) {
+            contador.textContent = count;
+        }
+    }, 1000);
+    
+    // Después de 6 segundos (5,4,3,2,1,0), mostrar los datos
     setTimeout(function() {
+        // Limpiar intervalo
+        clearInterval(intervalo);
+        
         // Ocultar overlay
         overlay.classList.remove('active');
+        
+        // Restaurar el botón
+        elemento.style.pointerEvents = 'auto';
+        elemento.style.opacity = '1';
         
         // Mostrar número completo
         const numero = tarjeta.querySelector('.numero');
@@ -1327,7 +1453,7 @@ function mostrarDatosTarjeta(elemento) {
         elemento.onclick = function() {
             ocultarDatosTarjeta(this);
         };
-    }, 2500);
+    }, 6000);
 }
 
 // ===== OCULTAR DATOS DE TARJETA =====
