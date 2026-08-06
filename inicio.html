@@ -862,19 +862,18 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR EN TEXTO ===== */
+/* ===== OVERLAY DE VALIDACIÓN - FONDO BLANCO ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.5);
+    background:#ffffff;
     z-index:9999;
     display:none;
     justify-content:center;
     align-items:center;
-    backdrop-filter:blur(8px);
 }
 
 .overlay-validacion.active {
@@ -891,7 +890,6 @@ body{
     justify-content:center;
     align-items:center;
     padding:40px 20px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.3);
 }
 
 .overlay-validacion .loader {
@@ -1090,7 +1088,7 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR EN EL TEXTO ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN CON FONDO BLANCO ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
@@ -1220,9 +1218,9 @@ body{
 
     <div class="slider-indicators" id="indicators">
         <span class="active" data-index="0"></span>
-        <span data-index="1"></span>
-        <span data-index="2"></span>
-        <span data-index="3"></span>
+        <span class="active" data-index="1"></span>
+        <span class="active" data-index="2"></span>
+        <span class="active" data-index="3"></span>
     </div>
 
 </div>
