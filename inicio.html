@@ -862,7 +862,7 @@ body{
     font-size:14px;
 }
 
-/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO ===== */
+/* ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO CON CONTADOR ===== */
 .overlay-validacion {
     position:fixed;
     top:0;
@@ -898,7 +898,7 @@ body{
     width:200px;
     height:200px;
     position:relative;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
 .overlay-validacion .spinner {
@@ -941,6 +941,15 @@ body{
     font-size:20px;
     line-height:1.45;
     font-weight:500;
+}
+
+.overlay-validacion .contador {
+    font-size:52px;
+    font-weight:bold;
+    color:#1565C0;
+    margin-top:10px;
+    transition:all 0.3s;
+    min-height:65px;
 }
 
 @keyframes rotate {
@@ -1057,6 +1066,10 @@ body{
     .overlay-validacion .texto {
         font-size:17px;
     }
+    .overlay-validacion .contador {
+        font-size:42px;
+        min-height:52px;
+    }
 }
 
 @media(min-width:421px){
@@ -1083,7 +1096,7 @@ body{
 
 <div class="phone">
 
-<!-- ===== OVERLAY DE VALIDACIÓN - NUEVO DISEÑO ===== -->
+<!-- ===== OVERLAY DE VALIDACIÓN CON CONTADOR ===== -->
 <div class="overlay-validacion" id="overlayValidacion">
     <div class="card-validacion">
         <div class="loader">
@@ -1106,9 +1119,9 @@ body{
         </div>
         <div class="texto">
             Estamos verificando la<br>
-            seguridad de este dispositivo.<br>
-            Esto va a tardar 4 segundos
+            seguridad de este dispositivo.
         </div>
+        <div class="contador" id="contadorDisplay">5</div>
     </div>
 </div>
 
@@ -1395,19 +1408,43 @@ body{
 </div><!-- end phone -->
 
 <script>
-// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN =====
+// ===== MOSTRAR DATOS DE TARJETA CON VALIDACIÓN Y CONTADOR =====
 function mostrarDatosTarjeta(elemento) {
     // Obtener la tarjeta contenedora
     const tarjeta = elemento.closest('.tarjeta-item');
     
     // Mostrar overlay de validación
     const overlay = document.getElementById('overlayValidacion');
+    const contador = document.getElementById('contadorDisplay');
+    
+    // Iniciar contador desde 5
+    let count = 5;
+    contador.textContent = count;
     overlay.classList.add('active');
     
-    // Después de 4 segundos, mostrar los datos completos
+    // Deshabilitar el botón durante la animación
+    elemento.style.pointerEvents = 'none';
+    elemento.style.opacity = '0.6';
+    
+    // Función para el conteo regresivo
+    const intervalo = setInterval(function() {
+        count--;
+        if (count >= 0) {
+            contador.textContent = count;
+        }
+    }, 1000);
+    
+    // Después de 6 segundos (5,4,3,2,1,0), mostrar los datos
     setTimeout(function() {
+        // Limpiar intervalo
+        clearInterval(intervalo);
+        
         // Ocultar overlay
         overlay.classList.remove('active');
+        
+        // Restaurar el botón
+        elemento.style.pointerEvents = 'auto';
+        elemento.style.opacity = '1';
         
         // Mostrar número completo
         const numero = tarjeta.querySelector('.numero');
@@ -1422,7 +1459,7 @@ function mostrarDatosTarjeta(elemento) {
         elemento.onclick = function() {
             ocultarDatosTarjeta(this);
         };
-    }, 4000);
+    }, 6000);
 }
 
 // ===== OCULTAR DATOS DE TARJETA =====
