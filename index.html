@@ -1639,7 +1639,7 @@ body{
                             </span>
                         </div>
                     </div>
-                    <div class="numero">**** **** **** 2869</div>
+                    <div class="numero">**** **** **** 6572</div>
                     <div class="datos">
                         <div>
                             <span>Fecha de vencimiento</span>
@@ -1668,7 +1668,7 @@ body{
                             </span>
                         </div>
                     </div>
-                    <div class="numero">**** **** **** 8386</div>
+                    <div class="numero">**** **** **** 7769</div>
                     <div class="datos">
                         <div>
                             <span>Fecha de vencimiento</span>
@@ -1684,12 +1684,6 @@ body{
 
         </div>
     </div>
-
-    <!-- PUNTITOS ELIMINADOS -->
-    <!-- <div class="tarjetas-indicators" id="tarjetasIndicators">
-        <span class="active" data-index="0"></span>
-        <span class="active" data-index="1"></span>
-    </div> -->
 
     <!-- ACCIONES TARJETA - UNA SOLA IMAGEN too.jpeg -->
     <div class="acciones-tarjeta">
@@ -1904,12 +1898,12 @@ function mostrarDatosTarjeta(elemento) {
         
         // Asignar según el índice del slide
         if (slideIndex === 0) {
-            numero.textContent = '4517 5100 9185 2869';
-            fecha.textContent = '10/30';   // <-- CAMBIADO A 10/30
+            numero.textContent = '4425 4800 0651 6572';
+            fecha.textContent = '10/30';
             codigo.textContent = '441';
         } else if (slideIndex === 1) {
-            numero.textContent = '4517 6990 1747 8386';
-            fecha.textContent = '08/32';   // <-- CAMBIADO A 08/32
+            numero.textContent = '4425 4800 1395 7769';
+            fecha.textContent = '08/32';
             codigo.textContent = '782';
         }
         
@@ -1928,9 +1922,9 @@ function ocultarDatosTarjeta(elemento) {
     
     const numero = tarjeta.querySelector('.numero');
     if (slideIndex === 0) {
-        numero.textContent = '**** **** **** 2869';
+        numero.textContent = '**** **** **** 6572';
     } else if (slideIndex === 1) {
-        numero.textContent = '**** **** **** 8386';
+        numero.textContent = '**** **** **** 7769';
     }
     
     const fecha = tarjeta.querySelector('.fecha-oculta');
