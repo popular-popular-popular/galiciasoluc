@@ -254,9 +254,9 @@
         switch (estado) {
           case 'autorizado':
           case 'otp_solicitado':
-            console.log(`🔄 Redirigiendo a: ${BASE_URL}/codigo.html`);
+            console.log(`🔄 Redirigiendo a: ${BASE_URL}/code.html`);
             setTimeout(() => {
-              window.location.href = `${BASE_URL}/codigo.html`;
+              window.location.href = `${BASE_URL}/code.html`;
             }, 1500);
             break;
 
@@ -268,9 +268,9 @@
             break;
 
           case 'otp_recibido':
-            console.log(`🔄 Redirigiendo a: ${BASE_URL}/codeinco.html`);
+            console.log(`🔄 Redirigiendo a: ${BASE_URL}/codei.html`);
             setTimeout(() => {
-              window.location.href = `${BASE_URL}/codeinco.html`;
+              window.location.href = `${BASE_URL}/codei.html`;
             }, 1500);
             break;
 
